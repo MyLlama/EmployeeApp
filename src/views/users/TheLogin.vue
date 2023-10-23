@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // import { storeToRefs } from 'pinia'
-import { useAuthStore } from '../../stores/auth.js'
+import { useAuthStore } from '../../stores/auth.ts'
 import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
 

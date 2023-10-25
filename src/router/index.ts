@@ -6,11 +6,6 @@ const router = createRouter({
     {
       path: '/',
       redirect: '/home'
-    },
-    {
-      path: '/user',
-      name: 'user',
-      component: () => import('../views/userProfile.vue')
     }
   ]
 })

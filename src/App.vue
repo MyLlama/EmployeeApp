@@ -11,8 +11,10 @@ import { isMobile } from './utilities/helper'
     <Header></Header>
     <SideBar v-if="!isMobile()" />
     <bottom-navigation v-if="isMobile()" />
+    <v-main>
+      <RouterView />
+    </v-main>
   </v-app>
-  <RouterView />
 </template>
 
 <style scoped></style>

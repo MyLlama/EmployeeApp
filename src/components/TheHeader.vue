@@ -2,6 +2,7 @@
 import logo from '../assets/images/logo.svg'
 import { isMobile } from '../utilities/helper'
 </script>
+
 <template>
   <v-app-bar>
     <template v-slot:prepend>
@@ -12,4 +13,5 @@ import { isMobile } from '../utilities/helper'
     </v-app-bar-title>
   </v-app-bar>
 </template>
+
 <style scoped></style>

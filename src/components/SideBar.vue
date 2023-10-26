@@ -2,6 +2,7 @@
 import { getViewsList } from '../utilities/helper'
 const views = getViewsList()
 </script>
+
 <template>
   <v-navigation-drawer permanent>
     <v-list nav>
@@ -11,6 +12,7 @@ const views = getViewsList()
         </template>
       </v-list-item>
     </v-list>
+
     <template v-slot:append>
       <div class="pa-2">
         <v-divider></v-divider>
@@ -25,7 +27,8 @@ const views = getViewsList()
     </template>
   </v-navigation-drawer>
 </template>
-<style>
+
+<style scoped>
 .isax {
   margin-right: 12px;
 }

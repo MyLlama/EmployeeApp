@@ -27,7 +27,6 @@ const views = getViewsList()
 </template>
 <style>
 .isax {
-  font-size: 18px;
   margin-right: 12px;
 }
 </style>

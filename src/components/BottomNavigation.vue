@@ -9,8 +9,4 @@ const views = getViewsList()
     </v-btn>
   </v-bottom-navigation>
 </template>
-<style>
-.isax {
-  font-size: 20px;
-}
-</style>
+<style scoped></style>

@@ -12,8 +12,4 @@ import { isMobile } from '../utilities/helper'
     </v-app-bar-title>
   </v-app-bar>
 </template>
-<style>
-.isax {
-  font-size: 20px;
-}
-</style>
+<style scoped></style>

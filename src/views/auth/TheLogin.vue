@@ -5,35 +5,41 @@ import { useRouter } from 'vue-router'
 import { isMobile } from '../../utilities/helper.ts'
 import loginImg from '../../assets/images/login-img.svg'
 
-const { userLogin } = useAuthStore()
 const authStore = useAuthStore()
 const router = useRouter()
 
 const username = ref('')
 const password = ref('')
 const showPassword = ref(false)
+const loginIsValid = ref(true)
+const snackbar = ref(false)
 
-const login = async () => {
-  await userLogin(username.value, password.value)
-  const isAutheticated = authStore.isAuthenticated
-  if (isAutheticated) {
-    // Redirect to home page
-    // Use replace to not enable the user to return to login route
-    router.replace({ name: 'home' })
+const validateLogin = () => {
+  loginIsValid.value = true
+  if (username.value === '' && password.value === '') {
+    loginIsValid.value = false
+    snackbar.value = false
   }
 }
 
-// Validation for username and password using vuetify
-// we define two refs which hold array of validation rules.
-// The first ref for username validation contains single validation function if the entered username(parameter) is truthy (not null, undefined, or empty string), the function returns true and validation passes
-// The array of second ref contain two validation rules which check for truthines of password and its length if it greater than 6
+const login = async () => {
+  validateLogin()
+  if (!loginIsValid.value) {
+    return
+  }
 
-const usernameValidation = ref([(username: any) => !!username || 'Username is required'])
-const passwordValidation = ref([
-  (password: any) => !!password || 'Password is required',
-  (password: string | any[]) =>
-    (password && password.length >= 6) || 'Password must be at least 6 characters long'
-])
+  await authStore.userLogin(username.value, password.value, router)
+
+  if (authStore.isAuthenticated()) {
+    router.replace({ name: 'home' })
+  } else {
+    console.error('Authentication Failed!')
+    snackbar.value = true // Show snackbar when authentication fails
+  }
+}
+
+const usernameValidation = [(username: any) => !!username || 'Username is required']
+const passwordValidation = [(password: any) => !!password || 'Password is required']
 </script>
 
 <template>
@@ -55,7 +61,6 @@ const passwordValidation = ref([
         </v-row>
         <v-row>
           <v-col>
-            <!-- <div class="form-container"> -->
             <v-sheet max-width="600">
               <h5>{{ $t('Enter your Username') }}</h5>
               <v-form @submit.prevent="login">
@@ -105,9 +110,10 @@ const passwordValidation = ref([
                   ></v-checkbox>
                   <p class="forgot-password-btn">{{ $t('Forgot Password?') }}</p>
                 </div>
+                <p v-if="!loginIsValid">Please enter your username and password!</p>
                 <v-btn
                   id="submit-login-details-button"
-                  class="d-flex text-capitalize my-8 mx-auto py-4 px-3 rounded-pill"
+                  class="d-flex text-capitalize my-2 mx-auto py-4 px-3 rounded-pill"
                   type="submit"
                   color="var(--btn-color)"
                 >
@@ -115,11 +121,18 @@ const passwordValidation = ref([
                 </v-btn>
               </v-form>
             </v-sheet>
-            <!-- </div> -->
           </v-col>
         </v-row>
       </v-col>
     </v-row>
+    <div class="text-center">
+      <v-snackbar v-model="snackbar" color="var(--btn-color)">
+        Invalid Credentials
+        <template v-slot:actions>
+          <v-btn color="white" variant="text" @click="snackbar = false">Close</v-btn>
+        </template>
+      </v-snackbar>
+    </div>
   </v-container>
 </template>
 

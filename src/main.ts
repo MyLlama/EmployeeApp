@@ -18,9 +18,10 @@ const vuetify = createVuetify({
   directives
 })
 const app = createApp(App)
+const pinia = createPinia()
 
 app.use(vuetify)
-app.use(createPinia())
+app.use(pinia)
 app.use(router)
 app.use(i18n)
 

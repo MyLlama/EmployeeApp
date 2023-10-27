@@ -1,14 +1,12 @@
 <script setup lang="ts">
-// import { storeToRefs } from 'pinia'
 import { useAuthStore } from '../../stores/auth.ts'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-
-import loginImg from '../../assets/identity.svg'
-
-// const { authToken } = storeToRefs(useAuthStore())
+import { helper } from '../../utilities/helper.ts'
+import loginImg from '../../assets/images/login-img.svg'
 
 const { userLogin } = useAuthStore()
+const { isMobile } = helper()
 const authStore = useAuthStore()
 const router = useRouter()
 
@@ -25,11 +23,23 @@ const login = async () => {
     router.replace({ name: 'home' })
   }
 }
+
+// Validation for username and password using vuetify
+// we define two refs which hold array of validation rules.
+// The first ref for username validation contains single validation function if the entered username(parameter) is truthy (not null, undefined, or empty string), the function returns true and validation passes
+// The array of second ref contain two validation rules which check for truthines of password and its length if it greater than 6
+
+const usernameValidation = ref([(username: any) => !!username || 'Username is required'])
+const passwordValidation = ref([
+  (password: any) => !!password || 'Password is required',
+  (password: string | any[]) =>
+    (password && password.length >= 6) || 'Password must be at least 6 characters long'
+])
 </script>
 
 <template>
-  <v-container fluid>
-    <v-row class="mb-3 mx-5">
+  <v-container fluid class="pa-0">
+    <v-row class="mb-3 mx-5" v-if="isMobile()">
       <v-col cols="12">
         <h1 class="heading-text">Open Llama</h1>
       </v-col>
@@ -38,66 +48,83 @@ const login = async () => {
       <v-col cols="12" md="6" class="mt-8 mb-4">
         <v-img :src="loginImg" class="login-img"></v-img>
       </v-col>
-      <v-col class="mx-5 d-flex flex-column justify-center">
-        <div class="form-container">
-          <h5>Enter your company Email or Username</h5>
-          <v-form @submit.prevent="login">
-            <v-text-field
-              class="input-fields"
-              clearable
-              type="text"
-              density="compact"
-              placeholder="Enter Username"
-              variant="outlined"
-              v-model.trim="username"
-              rounded="lg"
-            ></v-text-field>
-            <h5>Enter your company Password</h5>
+      <v-col class="mx-5 d-flex flex-column">
+        <v-row class="mb-4">
+          <v-col>
+            <h1 v-if="!isMobile()" class="heading-text">{{ $t('Open Llama') }}</h1>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col>
+            <!-- <div class="form-container"> -->
+            <v-sheet max-width="600">
+              <h5>{{ $t('Enter your Username') }}</h5>
+              <v-form @submit.prevent="login">
+                <v-text-field
+                  class="input-fields"
+                  clearable
+                  type="text"
+                  density="compact"
+                  :placeholder="$t('Enter Username')"
+                  variant="outlined"
+                  v-model.trim="username"
+                  rounded="lg"
+                  :rules="usernameValidation"
+                ></v-text-field>
+                <h5>{{ $t('Enter your Password') }}</h5>
 
-            <v-text-field
-              class="input-fields"
-              v-model.trim="password"
-              variant="outlined"
-              :append-inner-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-              :type="showPassword ? 'text' : 'password'"
-              @click:append-inner="showPassword = !showPassword"
-              density="compact"
-              placeholder="Enter Password"
-              rounded="lg"
-            >
-            </v-text-field>
-            <div class="login-helpers">
-              <v-checkbox
-                label="Remember me"
-                color="orange"
-                hide-details
-                class="checkbox"
-              ></v-checkbox>
-              <p class="forgot-password-btn">Forgot Password?</p>
-            </div>
-            <v-btn
-              id="submit-login-details-button"
-              class="d-flex text-capitalize my-8 mx-auto py-4 px-3 rounded-pill"
-              type="submit"
-              color="#F89854"
-            >
-              Login
-            </v-btn>
-          </v-form>
-        </div>
+                <v-text-field
+                  class="input-fields"
+                  v-model.trim="password"
+                  variant="outlined"
+                  :type="showPassword ? 'text' : 'password'"
+                  density="compact"
+                  :placeholder="$t('Enter Password')"
+                  rounded="lg"
+                  :rules="passwordValidation"
+                >
+                  <template v-slot:append-inner>
+                    <i
+                      class="isax isax-eye pointer"
+                      v-if="showPassword"
+                      @click="showPassword = !showPassword"
+                    >
+                    </i>
+                    <i
+                      class="isax isax-eye-slash pointer"
+                      v-else
+                      @click="showPassword = !showPassword"
+                    ></i>
+                  </template>
+                </v-text-field>
+                <div class="d-flex flex-row justify-center align-center">
+                  <v-checkbox
+                    :label="$t('Remember me')"
+                    color="orange"
+                    hide-details
+                    class="checkbox"
+                  ></v-checkbox>
+                  <p class="forgot-password-btn">{{ $t('Forgot Password?') }}</p>
+                </div>
+                <v-btn
+                  id="submit-login-details-button"
+                  class="d-flex text-capitalize my-8 mx-auto py-4 px-3 rounded-pill"
+                  type="submit"
+                  color="var(--btn-color)"
+                >
+                  Login
+                </v-btn>
+              </v-form>
+            </v-sheet>
+            <!-- </div> -->
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@500&family=Dosis:wght@700&display=swap');
-
-* {
-  margin: 0;
-  padding: 0;
-}
-
 .login-img {
   max-width: 15rem;
 }
@@ -107,23 +134,19 @@ const login = async () => {
     max-width: 40rem;
   }
 }
-
-@media (min-width: 768px) {
-  .form-container {
-    max-width: 70%;
-    /* margin-left: auto;
-    margin-right: auto; */
+@media (min-width: 600px) and (max-width: 768px) {
+  .login-img {
+    max-width: 25rem;
   }
 }
 
 #submit-login-details-button {
-  font-family: 'Albert Sans', sans-serif;
   width: 12.8125rem;
   font-size: 1.25rem;
+  color: white !important;
 }
 
 h5 {
-  font-family: 'Albert Sans', sans-serif;
   color: #000;
   font-size: 1rem;
   font-style: normal;
@@ -141,14 +164,7 @@ h5 {
   margin: 1rem 0;
 }
 
-.login-helpers {
-  font-family: 'Albert Sans', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .forgot-password-btn {
-  color: #d65a03;
+  color: var(--link-color);
 }
 </style>

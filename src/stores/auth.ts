@@ -1,9 +1,9 @@
-// import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import type { Ref, ComputedRef } from 'vue'
 import axios from 'axios'
 
 const baseUrl = import.meta.env.VITE_BASE_URL
+const url = `${baseUrl}/oauth2/access_token`
 
 export function useAuthStore() {
   const userId: Ref<string | null> = ref(null)
@@ -11,7 +11,7 @@ export function useAuthStore() {
 
   async function userLogin(username: string, password: string): Promise<void> {
     try {
-      const response = await axios.post(baseUrl, null, {
+      const response = await axios.post(url, null, {
         params: {
           username,
           password,
@@ -34,33 +34,3 @@ export function useAuthStore() {
     isAuthenticated
   }
 }
-
-// export const useAuthStore = defineStore({
-//   id: 'auth',
-//   state: () => ({
-//     userId: null,
-//     authToken: null
-//   }),
-//   actions: {
-//     async userLogin(username: string, password: string) {
-//       try {
-//         const response = await axios.post(baseUrl, null, {
-//           params: {
-//             username,
-//             password,
-//             grant_type: 'password',
-//             client_id: import.meta.env.VITE_CLIENT_ID
-//           }
-//         })
-//         this.authToken = response.data.access_token
-//       } catch (error) {
-//         console.error(error)
-//       }
-//     }
-//   },
-//   getters: {
-//     isAuthenticated(state) {
-//       return !!state.authToken
-//     }
-//   }
-// })

@@ -2,11 +2,10 @@
 import { useAuthStore } from '../../stores/auth.ts'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { helper } from '../../utilities/helper.ts'
+import { isMobile } from '../../utilities/helper.ts'
 import loginImg from '../../assets/images/login-img.svg'
 
 const { userLogin } = useAuthStore()
-const { isMobile } = helper()
 const authStore = useAuthStore()
 const router = useRouter()
 
@@ -39,19 +38,19 @@ const passwordValidation = ref([
 
 <template>
   <v-container fluid class="pa-0">
-    <v-row class="mb-3 mx-5" v-if="isMobile()">
+    <v-row class="mx-5 my-4" v-if="isMobile()">
       <v-col cols="12">
         <h1 class="heading-text">Open Llama</h1>
       </v-col>
     </v-row>
     <v-row class="mb-3 align-center">
-      <v-col cols="12" md="6" class="mt-8 mb-4">
+      <v-col cols="12" md="6">
         <v-img :src="loginImg" class="login-img"></v-img>
       </v-col>
       <v-col class="mx-5 d-flex flex-column">
-        <v-row class="mb-4">
+        <v-row class="mb-4" v-if="!isMobile()">
           <v-col>
-            <h1 v-if="!isMobile()" class="heading-text">{{ $t('Open Llama') }}</h1>
+            <h1 class="heading-text">{{ $t('Open Llama') }}</h1>
           </v-col>
         </v-row>
         <v-row>
@@ -161,7 +160,6 @@ h5 {
   font-style: normal;
   font-weight: 700;
   line-height: 138.2%; /* 2.764rem */
-  margin: 1rem 0;
 }
 
 .forgot-password-btn {

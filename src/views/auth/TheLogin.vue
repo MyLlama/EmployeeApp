@@ -46,7 +46,7 @@ const passwordValidation = [(password: any) => !!password || 'Password is requir
   <v-container fluid class="pa-0">
     <v-row class="mx-5 my-4" v-if="isMobile()">
       <v-col cols="12">
-        <h1 class="heading-text">Open Llama</h1>
+        <h1 class="heading-text">{{ $t('OpenLlama') }}</h1>
       </v-col>
     </v-row>
     <v-row class="mb-3 align-center">
@@ -56,26 +56,26 @@ const passwordValidation = [(password: any) => !!password || 'Password is requir
       <v-col class="mx-5 d-flex flex-column">
         <v-row class="mb-4" v-if="!isMobile()">
           <v-col>
-            <h1 class="heading-text">{{ $t('Open Llama') }}</h1>
+            <h1 class="heading-text">{{ $t('OpenLlama') }}</h1>
           </v-col>
         </v-row>
         <v-row>
           <v-col>
             <v-sheet max-width="600">
-              <h5>{{ $t('Enter your Username') }}</h5>
+              <p class="mb-2">{{ $t('EnterUsername') }}</p>
               <v-form @submit.prevent="login">
                 <v-text-field
                   class="input-fields"
                   clearable
                   type="text"
                   density="compact"
-                  :placeholder="$t('Enter Username')"
+                  :placeholder="$t('Username')"
                   variant="outlined"
                   v-model.trim="username"
                   rounded="lg"
                   :rules="usernameValidation"
                 ></v-text-field>
-                <h5>{{ $t('Enter your Password') }}</h5>
+                <p class="mb-2">{{ $t('EnterPassword') }}</p>
 
                 <v-text-field
                   class="input-fields"
@@ -83,7 +83,7 @@ const passwordValidation = [(password: any) => !!password || 'Password is requir
                   variant="outlined"
                   :type="showPassword ? 'text' : 'password'"
                   density="compact"
-                  :placeholder="$t('Enter Password')"
+                  :placeholder="$t('Password')"
                   rounded="lg"
                   :rules="passwordValidation"
                 >
@@ -103,12 +103,12 @@ const passwordValidation = [(password: any) => !!password || 'Password is requir
                 </v-text-field>
                 <div class="d-flex flex-row justify-center align-center">
                   <v-checkbox
-                    :label="$t('Remember me')"
+                    :label="$t('RememberMe')"
                     color="orange"
                     hide-details
                     class="checkbox"
                   ></v-checkbox>
-                  <p class="forgot-password-btn">{{ $t('Forgot Password?') }}</p>
+                  <p class="forgot-password-btn">{{ $t('ForgotPassword') }}</p>
                 </div>
                 <p v-if="!loginIsValid">Please enter your username and password!</p>
                 <v-btn
@@ -137,6 +137,26 @@ const passwordValidation = [(password: any) => !!password || 'Password is requir
 </template>
 
 <style scoped>
+#submit-login-details-button {
+  width: 13rem;
+  font-size: 1.25rem;
+  color: white !important;
+}
+
+p {
+  color: #000;
+  font-size: 1rem;
+  letter-spacing: 0.045rem;
+}
+.heading-text {
+  color: var(--text-color);
+  font-family: 'Dosis', sans-serif;
+}
+
+.forgot-password-btn {
+  color: var(--link-color);
+}
+
 .login-img {
   max-width: 15rem;
 }
@@ -150,32 +170,5 @@ const passwordValidation = [(password: any) => !!password || 'Password is requir
   .login-img {
     max-width: 25rem;
   }
-}
-
-#submit-login-details-button {
-  width: 12.8125rem;
-  font-size: 1.25rem;
-  color: white !important;
-}
-
-h5 {
-  color: #000;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 1.48125rem; /* 148.125% */
-  letter-spacing: 0.045rem;
-  margin-bottom: 0.7rem;
-}
-.heading-text {
-  color: #000;
-  font-family: 'Dosis', sans-serif;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 138.2%; /* 2.764rem */
-}
-
-.forgot-password-btn {
-  color: var(--link-color);
 }
 </style>

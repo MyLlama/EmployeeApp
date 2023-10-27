@@ -2,13 +2,13 @@ import { createI18n } from 'vue-i18n'
 
 const messages = {
   en: {
-    'Open Llama': 'Open Llama',
-    'Enter your Username': 'Enter your Username',
-    'Enter your Password': 'Enter your Password',
-    'Enter Username': 'Enter Username',
-    'Enter Password': 'Enter Password',
-    'Remember me': 'Remember me',
-    'Forgot Password?': 'Forgot Password?'
+    OpenLlama: 'Open Llama',
+    EnterUsername: 'Enter your Username',
+    EnterPassword: 'Enter your Password',
+    Username: 'Enter Username',
+    Password: 'Enter Password',
+    RememberMe: 'Remember me',
+    ForgotPassword: 'Forgot Password?'
   }
 }
 

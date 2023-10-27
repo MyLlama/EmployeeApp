@@ -7,17 +7,17 @@ import { isMobile } from './utilities/helper'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
-const showBottomNavigation = route.path === '/login'
+const isLoginPage = route.path === '/login'
 </script>
 
 <template>
   <v-app>
     <Header></Header>
-    <SideBar v-if="!isMobile()" />
+    <SideBar v-if="!isMobile() && isLoginPage" />
     <v-main>
       <RouterView />
     </v-main>
-    <bottom-navigation v-if="isMobile() && showBottomNavigation" />
+    <bottom-navigation v-if="isMobile() && isLoginPage" />
   </v-app>
 </template>
 

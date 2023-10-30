@@ -4,21 +4,19 @@ import BottomNavigation from './components/BottomNavigation.vue'
 import SideBar from './components/SideBar.vue'
 import Header from './components/TheHeader.vue'
 import { isMobile } from './utilities/helper'
-import { useRoute } from 'vue-router'
-import { computed } from 'vue'
+import { useAuthStore } from '@/stores/auth'
 
-const route = useRoute()
-const isHomePage = computed(() => route.path === '/home')
+const authStore = useAuthStore()
 </script>
 
 <template>
   <v-app>
     <Header></Header>
-    <SideBar v-if="!isMobile() && isHomePage" />
+    <SideBar v-if="!isMobile() && authStore.isAuthenticated()" />
     <v-main>
       <RouterView />
     </v-main>
-    <bottom-navigation v-if="isMobile() && isHomePage" />
+    <bottom-navigation v-if="isMobile() && authStore.isAuthenticated()" />
   </v-app>
 </template>
 

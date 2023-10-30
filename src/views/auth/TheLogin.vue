@@ -44,12 +44,12 @@ const passwordValidation = [(password: any) => !!password || 'Password is requir
 
 <template>
   <v-container fluid class="pa-0">
-    <v-row class="mx-5 my-4" v-if="isMobile()">
+    <v-row class="mx-5 my-2" v-if="isMobile()">
       <v-col cols="12">
         <h1 class="heading-text">{{ $t('OpenLlama') }}</h1>
       </v-col>
     </v-row>
-    <v-row class="mb-3 align-center">
+    <v-row class="mb-3 align-center mt-4">
       <v-col cols="12" md="6">
         <v-img :src="loginImg" class="login-img"></v-img>
       </v-col>
@@ -65,7 +65,6 @@ const passwordValidation = [(password: any) => !!password || 'Password is requir
               <p class="mb-2">{{ $t('EnterUsername') }}</p>
               <v-form @submit.prevent="login">
                 <v-text-field
-                  class="input-fields"
                   clearable
                   type="text"
                   density="compact"
@@ -78,7 +77,6 @@ const passwordValidation = [(password: any) => !!password || 'Password is requir
                 <p class="mb-2">{{ $t('EnterPassword') }}</p>
 
                 <v-text-field
-                  class="input-fields"
                   v-model.trim="password"
                   variant="outlined"
                   :type="showPassword ? 'text' : 'password'"
@@ -89,16 +87,10 @@ const passwordValidation = [(password: any) => !!password || 'Password is requir
                 >
                   <template v-slot:append-inner>
                     <i
-                      class="isax isax-eye pointer"
-                      v-if="showPassword"
+                      :class="`isax ${showPassword ? 'isax-eye' : 'isax-eye-slash'} pointer`"
                       @click="showPassword = !showPassword"
                     >
                     </i>
-                    <i
-                      class="isax isax-eye-slash pointer"
-                      v-else
-                      @click="showPassword = !showPassword"
-                    ></i>
                   </template>
                 </v-text-field>
                 <div class="d-flex flex-row justify-center align-center">
@@ -110,7 +102,6 @@ const passwordValidation = [(password: any) => !!password || 'Password is requir
                   ></v-checkbox>
                   <p class="forgot-password-btn">{{ $t('ForgotPassword') }}</p>
                 </div>
-                <p v-if="!loginIsValid">Please enter your username and password!</p>
                 <v-btn
                   id="submit-login-details-button"
                   class="d-flex text-capitalize my-2 mx-auto py-4 px-3 rounded-pill"

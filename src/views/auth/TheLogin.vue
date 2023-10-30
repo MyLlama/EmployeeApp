@@ -13,16 +13,11 @@ const password = ref('')
 const showPassword = ref(false)
 const showSnackbar = ref(false)
 
-
-
 const login = async () => {
-  
   if (username.value === '' && password.value === '') {
-    showSnackbar.value = false
     return
-  } else {
-    await authStore.userLogin(username.value, password.value, router)
   }
+  await authStore.userLogin(username.value, password.value, router)
 
   if (authStore.isAuthenticated()) {
     router.replace({ name: 'home' })

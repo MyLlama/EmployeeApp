@@ -13,7 +13,8 @@ const messages = {
     Library: 'Library',
     Learning: 'Learning',
     Profile: 'Profile',
-    Llama: 'MyLlama'
+    Llama: 'MyLlama',
+    InvalidCredentials: 'Invalid Credentials'
   }
 }
 

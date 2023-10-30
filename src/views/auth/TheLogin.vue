@@ -100,9 +100,9 @@ const passwordValidation = [(password: any) => !!password || 'Password is requir
         </v-row>
       </v-col>
     </v-row>
-    <div class="text-center">
+    <div>
       <v-snackbar v-model="showSnackbar" color="var(--btn-color)">
-        Invalid Credentials
+        {{ $t('InvalidCredentials') }}
         <template v-slot:actions>
           <v-btn color="white" variant="text" @click="showSnackbar = false">Close</v-btn>
         </template>

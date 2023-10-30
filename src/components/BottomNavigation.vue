@@ -7,6 +7,7 @@ const views = getViewsList()
   <v-bottom-navigation>
     <v-btn value="recent" v-for="view in views" :key="view.name">
       <i :class="view.icon" />
+      <span>{{ $t(view.name) }}</span>
     </v-btn>
   </v-bottom-navigation>
 </template>

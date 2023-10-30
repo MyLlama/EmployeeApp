@@ -6,7 +6,7 @@ const views = getViewsList()
 <template>
   <v-navigation-drawer permanent>
     <v-list nav>
-      <v-list-item v-for="view in views" :key="view.name" :title="view.name" :value="view.name">
+      <v-list-item v-for="view in views" :key="view.name" :title="$t(view.name)" :value="view.name">
         <template v-slot:prepend>
           <i :class="view.icon"></i>
         </template>

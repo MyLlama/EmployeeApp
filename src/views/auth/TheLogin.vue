@@ -11,30 +11,24 @@ const router = useRouter()
 const username = ref('')
 const password = ref('')
 const showPassword = ref(false)
-const loginIsValid = ref(true)
-const snackbar = ref(false)
+const showSnackbar = ref(false)
 
-const validateLogin = () => {
-  loginIsValid.value = true
-  if (username.value === '' && password.value === '') {
-    loginIsValid.value = false
-    snackbar.value = false
-  }
-}
+
 
 const login = async () => {
-  validateLogin()
-  if (!loginIsValid.value) {
+  
+  if (username.value === '' && password.value === '') {
+    showSnackbar.value = false
     return
+  } else {
+    await authStore.userLogin(username.value, password.value, router)
   }
-
-  await authStore.userLogin(username.value, password.value, router)
 
   if (authStore.isAuthenticated()) {
     router.replace({ name: 'home' })
   } else {
     console.error('Authentication Failed!')
-    snackbar.value = true // Show snackbar when authentication fails
+    showSnackbar.value = true // Show snackbar when authentication fails
   }
 }
 
@@ -94,12 +88,7 @@ const passwordValidation = [(password: any) => !!password || 'Password is requir
                   </template>
                 </v-text-field>
                 <div class="d-flex flex-row justify-center align-center">
-                  <v-checkbox
-                    :label="$t('RememberMe')"
-                    color="orange"
-                    hide-details
-                    class="checkbox"
-                  ></v-checkbox>
+                  <v-checkbox :label="$t('RememberMe')" color="orange" hide-details></v-checkbox>
                   <p class="forgot-password-btn">{{ $t('ForgotPassword') }}</p>
                 </div>
                 <v-btn
@@ -117,10 +106,10 @@ const passwordValidation = [(password: any) => !!password || 'Password is requir
       </v-col>
     </v-row>
     <div class="text-center">
-      <v-snackbar v-model="snackbar" color="var(--btn-color)">
+      <v-snackbar v-model="showSnackbar" color="var(--btn-color)">
         Invalid Credentials
         <template v-slot:actions>
-          <v-btn color="white" variant="text" @click="snackbar = false">Close</v-btn>
+          <v-btn color="white" variant="text" @click="showSnackbar = false">Close</v-btn>
         </template>
       </v-snackbar>
     </div>

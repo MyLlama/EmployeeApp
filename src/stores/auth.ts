@@ -9,7 +9,7 @@ const url = `${baseUrl}/oauth2/access_token`
 export const useAuthStore = defineStore('auth', () => {
   const authToken = useStorage('authToken', '')
   const userId = useStorage('userId', '')
-  const validityDuration = useStorage('tokenExpirey', 0)
+  const validityDuration = useStorage('validityDuration', 0)
   let timer: NodeJS.Timeout | number | null = null
 
   // useStorage returns a RemovableRef, which is a special type of reference that is used for reactive state management in Vue.
@@ -27,11 +27,11 @@ export const useAuthStore = defineStore('auth', () => {
       })
       authToken.value = response.data.access_token
       userId.value = username
-      const expiresIn = +response.data.expires_in * 1000 // Convert to milliseconds
-      // const expiresIn = 5000
+      // const expiresIn = +response.data.expires_in * 1000 // Convert to milliseconds
+      const expiresIn = 5000
       validityDuration.value = Date.now() + expiresIn // Calculate the future time in milliseconds when the token will expire.
       timer = setTimeout(() => {
-        autoLogout(router)
+        logout(router)
       }, expiresIn)
     } catch (error) {
       console.error(error)
@@ -42,11 +42,10 @@ export const useAuthStore = defineStore('auth', () => {
     return !!authToken.value
   }
 
-  const autoLogout = (router: Router) => {
-    logout(router)
-  }
-
   const logout = (router: Router) => {
+    if (Date.now() > validityDuration.value) {
+      alert('Session Expired!')
+    }
     authToken.value = ''
     userId.value = ''
     validityDuration.value = 0
@@ -62,6 +61,5 @@ export const useAuthStore = defineStore('auth', () => {
     authToken,
     userId,
     logout,
-    autoLogout
   }
 })

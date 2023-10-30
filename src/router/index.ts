@@ -23,7 +23,6 @@ const router = createRouter({
 
 router.beforeEach(async (to, _, next) => {
   const authStore = useAuthStore()
-  console.log(authStore.isAuthenticated())
   if (!authStore.isAuthenticated() && to.name !== 'login') {
     next('/login')
   } else if (to.fullPath === '/login' && authStore.isAuthenticated()) {

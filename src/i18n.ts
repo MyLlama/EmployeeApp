@@ -8,7 +8,12 @@ const messages = {
     Username: 'Enter Username',
     Password: 'Enter Password',
     RememberMe: 'Remember me',
-    ForgotPassword: 'Forgot Password?'
+    ForgotPassword: 'Forgot Password?',
+    Home: 'Home',
+    Library: 'Library',
+    Learning: 'Learning',
+    Profile: 'Profile',
+    Llama: 'MyLlama'
   }
 }
 

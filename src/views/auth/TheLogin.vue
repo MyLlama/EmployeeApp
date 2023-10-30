@@ -2,8 +2,7 @@
 import { useAuthStore } from '../../stores/auth.ts'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { isMobile } from '../../utilities/helper.ts'
-import loginImg from '../../assets/images/login-img.svg'
+import loginImg from '../../assets/images/login_img.svg'
 
 const authStore = useAuthStore()
 const router = useRouter()
@@ -33,19 +32,20 @@ const passwordValidation = [(password: any) => !!password || 'Password is requir
 
 <template>
   <v-container fluid class="pa-0">
-    <v-row class="mx-5 my-2" v-if="isMobile()">
-      <v-col cols="12">
-        <h1 class="heading-text">{{ $t('OpenLlama') }}</h1>
-      </v-col>
-    </v-row>
-
-    <v-row class="mb-3 align-center mt-4">
+    <v-row class="mx-0 vertical-center-desktop">
       <v-col cols="12" md="6">
-        <v-img :src="loginImg" class="login-img"></v-img>
+        <!-- Image with Horizontal Centering for Mobile -->
+        <div class="d-flex justify-center d-md-none">
+          <v-img :src="loginImg" class="login-img"></v-img>
+        </div>
+        <!-- Image without centering for Desktop -->
+        <div class="d-none d-md-flex mx-8">
+          <v-img :src="loginImg" class="login-img"></v-img>
+        </div>
       </v-col>
 
-      <v-col class="mx-5 d-flex flex-column">
-        <v-row class="mb-4" v-if="!isMobile()">
+      <v-col class="d-flex flex-column mx-3">
+        <v-row class="my-auto">
           <v-col>
             <h1 class="heading-text">{{ $t('OpenLlama') }}</h1>
           </v-col>
@@ -92,7 +92,7 @@ const passwordValidation = [(password: any) => !!password || 'Password is requir
 
                 <v-btn
                   id="submit-login-details-button"
-                  class="d-flex text-capitalize my-2 mx-auto py-4 px-3 rounded-pill"
+                  class="d-flex text-capitalize my-6 mx-auto rounded-pill"
                   type="submit"
                   color="var(--btn-color)"
                 >
@@ -137,12 +137,15 @@ p {
 }
 
 .login-img {
-  max-width: 15rem;
+  max-width: 20rem;
 }
 
 @media (min-width: 768px) {
   .login-img {
     max-width: 40rem;
+  }
+  .vertical-center-desktop {
+    margin-top: 20vh;
   }
 }
 @media (min-width: 600px) and (max-width: 768px) {
@@ -150,4 +153,5 @@ p {
     max-width: 25rem;
   }
 }
+
 </style>

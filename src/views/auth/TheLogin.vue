@@ -38,16 +38,19 @@ const passwordValidation = [(password: any) => !!password || 'Password is requir
         <h1 class="heading-text">{{ $t('OpenLlama') }}</h1>
       </v-col>
     </v-row>
+
     <v-row class="mb-3 align-center mt-4">
       <v-col cols="12" md="6">
         <v-img :src="loginImg" class="login-img"></v-img>
       </v-col>
+
       <v-col class="mx-5 d-flex flex-column">
         <v-row class="mb-4" v-if="!isMobile()">
           <v-col>
             <h1 class="heading-text">{{ $t('OpenLlama') }}</h1>
           </v-col>
         </v-row>
+
         <v-row>
           <v-col>
             <v-sheet max-width="600">
@@ -86,6 +89,7 @@ const passwordValidation = [(password: any) => !!password || 'Password is requir
                   <v-checkbox :label="$t('RememberMe')" color="orange" hide-details></v-checkbox>
                   <p class="forgot-password-btn">{{ $t('ForgotPassword') }}</p>
                 </div>
+
                 <v-btn
                   id="submit-login-details-button"
                   class="d-flex text-capitalize my-2 mx-auto py-4 px-3 rounded-pill"

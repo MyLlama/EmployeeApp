@@ -27,8 +27,7 @@ export const useAuthStore = defineStore('auth', () => {
       })
       authToken.value = response.data.access_token
       userId.value = username
-      // const expiresIn = +response.data.expires_in * 1000 // Convert to milliseconds
-      const expiresIn = 5000
+      const expiresIn = +response.data.expires_in * 1000 // Convert to milliseconds
       validityDuration.value = Date.now() + expiresIn // Calculate the future time in milliseconds when the token will expire.
       timer = setTimeout(() => {
         logout(router)
@@ -60,6 +59,6 @@ export const useAuthStore = defineStore('auth', () => {
     isAuthenticated,
     authToken,
     userId,
-    logout,
+    logout
   }
 })

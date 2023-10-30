@@ -4,7 +4,7 @@ import { isMobile } from '../utilities/helper'
 </script>
 
 <template>
-  <v-app-bar>
+  <v-app-bar :elevation="1">
     <template v-slot:prepend>
       <v-img height="30px" width="40px" :src="logo"></v-img>
     </template>

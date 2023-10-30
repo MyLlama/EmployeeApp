@@ -35,7 +35,7 @@ const passwordValidation = [(password: any) => !!password || 'Password is requir
     <v-row class="mx-0 vertical-center-desktop">
       <v-col cols="12" md="6">
         <!-- Image with Horizontal Centering for Mobile -->
-        <div class="d-flex justify-center d-md-none">
+        <div class="d-flex justify-center d-md-none mt-12">
           <v-img :src="loginImg" class="login-img"></v-img>
         </div>
         <!-- Image without centering for Desktop -->

@@ -8,7 +8,7 @@ const views = getViewsList()
     <v-list nav>
       <v-list-item v-for="view in views" :key="view.name" :title="$t(view.name)" :value="view.name">
         <template v-slot:prepend>
-          <i :class="view.icon"></i>
+          <VsxIcon :iconName="view.icon" :size="20" type="linear" class="mx-2" />
         </template>
       </v-list-item>
     </v-list>
@@ -19,7 +19,7 @@ const views = getViewsList()
         <v-list>
           <v-list-item title="Setting">
             <template v-slot:prepend>
-              <i class="isax isax-setting-2"></i>
+              <VsxIcon iconName="Setting2" :size="18" type="linear" class="mx-2" />
             </template>
           </v-list-item>
         </v-list>

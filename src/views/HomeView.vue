@@ -6,7 +6,6 @@ import { ref } from 'vue'
 import smiley from '../assets/images/smiley.svg'
 import { isMobile } from '../utilities/helper'
 
-const store = useUserStore();
 const { fetchUserProfile } = useUserStore();
 const { user } = storeToRefs(useUserStore())
 const width = isMobile() ? ref(window.innerWidth - 48) : 600;
@@ -61,7 +60,6 @@ onMounted(async () => {
           Related to understanding of the key concepts in Initiate.
         </v-card-item>
 
-
         <v-card-actions>
           <p class="text-caption pa-2">before: 4 Sept 2023</p>
 
@@ -80,7 +78,7 @@ onMounted(async () => {
 
         <v-card-item>
           <v-list v-for="n in 3" :key="n">
-            <v-list-item class="my-2 rounded-lg" variant="tonal">
+            <v-list-item class="rounded-lg" variant="tonal">
               <template v-slot:prepend>
                 <v-checkbox-btn :disabled="true"></v-checkbox-btn>
               </template>
@@ -95,6 +93,7 @@ onMounted(async () => {
           </v-card-item>
 
           <v-spacer></v-spacer>
+
           <v-btn size="small" rounded="xl" color="white" class="see-all-btn px-3 ma-3">
             See all
           </v-btn>

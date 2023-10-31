@@ -11,11 +11,11 @@ export const useUserStore = defineStore('user', () => {
 
   async function fetchUserProfile() {
     try {
-      const token = authToken
+      const token = authToken.value
       const headers = {
         Authorization: `Bearer ${token}`
       }
-      const response = await axios.get(`${baseUrl}/api/user/v1/accounts/${userId}`, {
+      const response = await axios.get(`${baseUrl}/api/user/v1/accounts/${userId.value}`, {
         headers
       })
       user.value = response.data

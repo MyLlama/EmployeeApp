@@ -1,6 +1,10 @@
-* {
-  margin: 0;
-  padding: 0;
+:root {
+  --btn-color: #f89854;
+  --link-color: #d65a03;
+  --text-color: #000
+}
+.pointer {
+  cursor: pointer;
 }
 
 .isax {

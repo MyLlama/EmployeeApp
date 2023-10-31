@@ -3,7 +3,7 @@ import { onMounted } from 'vue'
 import { useUserStore } from '../stores/user'
 import { storeToRefs } from "pinia";
 import { ref } from 'vue'
-import smiley from '../assets/images/smiley.svg'
+import smiley from '../assets/Images/smiley.svg'
 import { isMobile } from '../utilities/helper'
 
 const { fetchUserProfile } = useUserStore();

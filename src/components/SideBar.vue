@@ -19,7 +19,7 @@ const views = getViewsList()
         <v-list>
           <v-list-item title="Setting">
             <template v-slot:prepend>
-              <VsxIcon iconName="Setting2" :size="18" type="linear" class="mx-2" />
+              <VsxIcon iconName="Setting2" :size="20" type="linear" class="mx-2" />
             </template>
           </v-list-item>
         </v-list>

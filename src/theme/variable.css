@@ -1,12 +1,40 @@
-:root {
-  --btn-color: #f89854;
-  --link-color: #d65a03;
-  --text-color: #000
-}
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans&family=Dosis:wght@700&family=Plus+Jakarta+Sans&display=swap');
+
 .pointer {
   cursor: pointer;
+}
+* {
+  margin: 0;
+  padding: 0;
 }
 
 .isax {
   font-size: 1.25rem;
+}
+
+:root {
+  /* User login */
+  --btn-color: #f89854;
+  --link-color: #d65a03;
+  --text-color: #000;
+
+  /* User Stats */
+  --user-stats-background-color: linear-gradient(
+    100deg,
+    rgba(232, 244, 246, 0.82) 20.53%,
+    rgba(196, 222, 231, 0.82) 102.44%
+  );
+  --user-stats-card-border-color: #cce9eb;
+  --user-stats-card-border-color1: gray;
+  --user-stats-title-color: rgb(46, 68, 92);
+
+  /* Metric maps */
+  --metric-map-card-border-color: #e5e4e2;
+
+  /* Quick Actions */
+  --favorite-button: radial-gradient(
+    104.17% 104.17% at 77.62% 22.26%,
+    #ff9aac 0%,
+    rgba(255, 223, 213, 0.91) 100%
+  );
 }

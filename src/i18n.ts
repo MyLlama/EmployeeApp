@@ -14,7 +14,15 @@ const messages = {
     Learning: 'Learning',
     Profile: 'Profile',
     Llama: 'MyLlama',
-    InvalidCredentials: 'Invalid Credentials'
+    InvalidCredentials: 'Invalid Credentials',
+    MetricMaps: 'Metric Maps',
+    JobTitle: 'Job Title:',
+    QuickActions: 'Quick Actions',
+    Favorite: 'Favorite',
+    Saved: 'Saved',
+    Courses: 'Courses',
+    Settings: 'Settings',
+    Logout: 'Logout'
   }
 }
 

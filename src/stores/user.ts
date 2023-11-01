@@ -7,7 +7,7 @@ const { userId, authToken } = storeToRefs(useAuthStore())
 
 export const useUserStore = defineStore('user', () => {
   const baseUrl = import.meta.env.VITE_BASE_URL
-  const user = ref({})
+  const user = ref()
 
   async function fetchUserProfile() {
     try {

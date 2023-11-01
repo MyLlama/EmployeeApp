@@ -3,12 +3,12 @@ import { onMounted } from 'vue'
 import { useUserStore } from '../stores/user'
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
-import smiley from '../assets/Images/Smiley.svg'
+import smiley from '../assets/images/Smiley.svg'
 import { isMobile } from '../utilities/helper'
 
 const { fetchUserProfile } = useUserStore()
 const { user } = storeToRefs(useUserStore())
-const width = ref(isMobile() ? window.innerWidth - 48 : 600)
+const width = ref(isMobile() ? window.innerWidth - 48 : 600);
 
 function getGreetingMessage() {
   const currentTime = new Date()
@@ -33,7 +33,7 @@ onMounted(async () => {
     <template v-slot:append>
       <v-img height="60" width="60" :src="smiley"></v-img>
     </template>
-    <p class="overline text-capitalize">Hi {{ user?.name }},</p>
+    <p class="overline text-capitalize">Hi {{ user?.name }}, </p>
     <v-list-item-title class="text-h5">
       {{ getGreetingMessage() }}
     </v-list-item-title>
@@ -68,7 +68,7 @@ onMounted(async () => {
           <v-spacer></v-spacer>
           <div class="px-6 d-flex">
             <p class="text-caption mr-2">Try now</p>
-            <i class="isax isax-arrow-right" />
+            <VsxIcon iconName="ArrowSquareRight" :size="20" type="linear" />
           </div>
         </v-card-actions>
       </v-card>

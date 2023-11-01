@@ -78,11 +78,7 @@ const passwordValidation = [(password: any) => !!password || 'Password is requir
                   :rules="passwordValidation"
                 >
                   <template v-slot:append-inner>
-                    <i
-                      :class="`isax ${showPassword ? 'isax-eye' : 'isax-eye-slash'} pointer`"
-                      @click="showPassword = !showPassword"
-                    >
-                    </i>
+                    <VsxIcon :iconName="`${showPassword ? 'Eye' : 'EyeSlash'}`" :size="20" type="linear" class="pointer" @click="showPassword = !showPassword" />
                   </template>
                 </v-text-field>
                 <div class="d-flex flex-row justify-center align-center">

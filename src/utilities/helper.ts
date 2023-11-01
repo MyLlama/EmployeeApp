@@ -6,23 +6,23 @@ function getViewsList() {
   return [
     {
       name: 'Home',
-      icon: 'isax isax-home',
+      icon: 'Home',
       route: '/home'
     },
     {
       name: 'Library',
-      icon: 'isax isax-folder-open',
+      icon: 'FolderOpen',
       route: ''
     },
     {
       name: 'Learning',
-      icon: 'isax isax-colorfilter',
-      route: ''
+      icon: 'Colorfilter',
+     route: ''
     },
     {
       name: 'Profile',
-      icon: 'isax isax-user',
-      route: '/profile'
+      icon: 'User',
+     route: '/profile'
     }
   ]
 }

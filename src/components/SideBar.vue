@@ -17,7 +17,7 @@ const router = useRouter()
         @click="router.push(view.route)"
       >
         <template v-slot:prepend>
-          <i :class="view.icon"></i>
+          <VsxIcon :iconName="view.icon" :size="20" type="linear" class="mx-2" />
         </template>
       </v-list-item>
     </v-list>
@@ -28,7 +28,7 @@ const router = useRouter()
         <v-list>
           <v-list-item title="Setting">
             <template v-slot:prepend>
-              <i class="isax isax-setting-2"></i>
+              <VsxIcon iconName="Setting2" :size="20" type="linear" class="mx-2" />
             </template>
           </v-list-item>
         </v-list>

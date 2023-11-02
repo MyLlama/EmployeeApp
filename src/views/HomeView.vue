@@ -8,7 +8,7 @@ import { isMobile } from '../utilities/helper'
 
 const { fetchUserProfile } = useUserStore()
 const { user } = storeToRefs(useUserStore())
-const width = ref(isMobile() ? window.innerWidth - 48 : 600);
+const width = ref(isMobile() ? window.innerWidth - 48 : 600)
 
 function getGreetingMessage() {
   const currentTime = new Date()
@@ -33,7 +33,7 @@ onMounted(async () => {
     <template v-slot:append>
       <v-img height="60" width="60" :src="smiley"></v-img>
     </template>
-    <p class="overline text-capitalize">Hi {{ user?.name }}, </p>
+    <p class="overline text-capitalize">Hi {{ user?.name }},</p>
     <v-list-item-title class="text-h5">
       {{ getGreetingMessage() }}
     </v-list-item-title>

@@ -3,12 +3,12 @@ import { isMobile } from '../utilities/helper'
 </script>
 
 <template>
-  <v-card class="mx-4 my-4 rounded-xl" elevation="0" id="user-stats-card">
+  <v-card class="mx-4 my-4 px-2 mb-1 rounded-xl" elevation="0" id="user-stats-card">
     <v-row>
-      <v-col v-for="n in 3" :key="n" cols="4" class="px-0">
-        <v-card-item class="text-center px-5 my-6" id="user-stats-card-item">
-          <p>Completed</p>
-          <v-card-title class="text-h4 mt-3" :class="isMobile() ? 'text-left' : ''">2</v-card-title>
+      <v-col v-for="n in 3" :key="n" cols="4" class="px-0 py-7">
+        <v-card-item class="text-center px-2 my-2" id="user-stats-card-item">
+          <p style="font-size: 12px">Completed</p>
+          <v-card-title style="font-size: 20px" class="mt-1 mr-12">2</v-card-title>
         </v-card-item>
       </v-col>
     </v-row>

@@ -17,15 +17,26 @@ const logout = (quickAction: any) => {
 </script>
 
 <template>
-  <v-card class="mx-4 pa-2 rounded-xl elevation-0">
+  <v-card class="mx-4 mb-1 rounded-xl elevation-0">
     <v-card-title class="quick-actions-card-title">{{ $t('QuickActions') }}</v-card-title>
     <v-row class="d-flex flex-start pa-5 mt-3">
-      <v-col v-for="quickAction in quickActionBtns" :key="quickAction.name" cols="auto"
-        class="d-flex flex-column align-center">
-        <BaseButton @click="logout(quickAction)" :color="quickAction.color"
-          :style="{ background: quickAction.background }" buttonClass="rounded-circle mb-2 elevation-0"
-          :class="isMobile() ? 'ml-4' : ''" height="63" width="60" :variant="quickAction.variant">
-          <i :class="quickAction.icon" />
+      <v-col
+        v-for="quickAction in quickActionBtns"
+        :key="quickAction.name"
+        cols="auto"
+        class="d-flex flex-column align-center"
+      >
+        <BaseButton
+          @click="logout(quickAction)"
+          :color="quickAction.color"
+          :style="{ background: quickAction.background }"
+          buttonClass="rounded-circle mb-2 elevation-0"
+          :class="isMobile() ? 'ml-4' : ''"
+          height="63"
+          width="60"
+          :variant="quickAction.variant"
+        >
+          <VsxIcon :iconName="quickAction.icon" :size="20" type="linear" class="mx-2" />
         </BaseButton>
 
         <span class="quick-action-button-name" :class="isMobile() ? 'ml-4' : ''">{{

@@ -1,6 +1,8 @@
 <template>
   <v-card class="matric-map-card mx-4 my-3 rounded-xl px-2 elevation-0" variant="outlined">
-    <v-card-title color="black" class="metric-maps-title mt-4 text-black"> {{ $t('MetricMaps') }}</v-card-title>
+    <v-card-title color="black" class="metric-maps-title mt-4 text-black">
+      {{ $t('MetricMaps') }}</v-card-title
+    >
     <v-divider color="black"></v-divider>
     <canvas class="pa-4" ref="radarChartCanvas"></canvas>
   </v-card>

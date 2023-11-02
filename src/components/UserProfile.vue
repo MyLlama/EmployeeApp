@@ -19,7 +19,9 @@ onMounted(async () => {
 
     <v-card-item>
       <v-card-title id="user-name" class="text-h6">{{ user?.name }}</v-card-title>
-      <v-card-subtitle id="job-title" class=" text-subtitle-1">   {{ $t('JobTitle') }} {{ user?.bio }}</v-card-subtitle>
+      <v-card-subtitle id="job-title" class="text-subtitle-1">
+        {{ $t('JobTitle') }} {{ user?.bio }}</v-card-subtitle
+      >
     </v-card-item>
   </v-card>
 </template>

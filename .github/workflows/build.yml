@@ -1,10 +1,11 @@
 name: Verify Build
 
 on:
+  push:
+    branches: [ staging ]
   pull_request:
-    branches:
-      - staging
-
+    branches: [ staging ]
+      
 jobs:  
   build:
     runs-on: ubuntu-latest

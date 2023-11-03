@@ -1,7 +1,8 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import '@mdi/font/css/materialdesignicons.css'
-import { VsxIcon } from "vue-iconsax";
+import './assets/icons/style.css'
+import '@mdi/font/css/materialdesignicons.css'
 
 // Vuetify
 import 'vuetify/styles'
@@ -24,7 +25,6 @@ app.use(vuetify)
 app.use(pinia)
 app.use(router)
 app.use(i18n)
-app.component("VsxIcon", VsxIcon);
 // Static usage of icons
 
 app.mount('#app')

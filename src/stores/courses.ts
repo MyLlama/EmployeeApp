@@ -4,16 +4,11 @@ import { useAuthStore } from './auth'
 import { ref } from 'vue'
 
 const currentCourse = ref({
-    chapters: [{
-      children: [],
-      display_name: '',
-      id: '',
-      section: [{}]
-    }], 
-    children: []
-});
-
-
+  start_date: '',
+  end_date: '',
+  chapters: <any>[],
+  course_name: ''
+})
 
 const { authToken } = storeToRefs(useAuthStore())
 const token = authToken.value
@@ -22,21 +17,28 @@ const headers = {
   Authorization: `Bearer ${token}`
 }
 
-const baseUrl = import.meta.env.VITE_BASE_URL 
+const baseUrl = import.meta.env.VITE_BASE_URL
 
 export const useCourseStore = defineStore('course', () => {
-
   const getCurrentCourse = async (): Promise<any> => {
     try {
-      const url = `${baseUrl}/api/enrollment/v1/enrollment` 
+      const url = `${baseUrl}/api/enrollment/v1/enrollment`
       const headers = {
         Authorization: `Bearer ${token}`
       }
       const response = await axios.get(url, { headers })
+
       const currentDate = Date.now()
-      const currentCourseId = response.data.find((course: any) => Date.parse(course.course_details.course_end) > currentDate).course_details.course_id
-      await fetchCourseDetails(currentCourseId);
-      
+      const course = response.data.find(
+        (course: any) => Date.parse(course.course_details.course_end) > currentDate
+      )
+      const currentCourseId = course.course_details.course_id
+      currentCourse.value.start_date = course.course_details.course_start
+      currentCourse.value.end_date = course.course_details.course_end
+      currentCourse.value.course_name = course.course_details.course_name
+      console.log(currentCourse.value.course_name)
+
+      await fetchCourseDetails(currentCourseId)
     } catch (error) {
       console.error(error)
     }
@@ -45,28 +47,34 @@ export const useCourseStore = defineStore('course', () => {
   const fetchCourseDetails = async (courseId: string): Promise<any> => {
     try {
       const url = `${baseUrl}/api/course_home/v1/outline/${courseId}`
-      
-      const response = await axios.get(url, { headers })
-      const course: any = Object.values(response.data.course_blocks.blocks).reduce((course: any, block: any) => {
-        course.blocks ? course.blocks.push(block) : course.blocks = [block]
-        return course
-      }, {})
 
-      currentCourse.value = course.blocks.find((block: any) => block.type === 'course');
-      let currentChapterIndex: number;
-      course.blocks.map((block: { type: string, id: never, children: [], section: [{}] }) => {
-        if(block.type === 'chapter') {
-            currentCourse.value.chapters ? currentCourse.value.chapters.push(block) : currentCourse.value.chapters = [block];
-            currentChapterIndex = currentCourse.value.chapters.length-1;
-        } else if (block.type === "sequential" && currentChapterIndex !== undefined && currentCourse.value.chapters[currentChapterIndex].children.includes(block.id)) {
-            currentCourse.value.chapters[currentChapterIndex].section ? currentCourse.value.chapters[currentChapterIndex].section.push(block) : currentCourse.value.chapters[currentChapterIndex].section = [block]
+      const response = await axios.get(url, { headers })
+      let chapters: any[]
+
+      let currentChapterIndex: number
+
+      const blocks = Object.values(response.data.course_blocks.blocks)
+
+      blocks.map((block: any) => {
+        if (block.type === 'chapter') {
+          chapters ? chapters.push(block) : (chapters = [block])
+          currentChapterIndex = chapters.length - 1
+        } else if (
+          block.type === 'sequential' &&
+          currentChapterIndex !== undefined &&
+          chapters !== undefined &&
+          chapters[currentChapterIndex].children.includes(block.id)
+        ) {
+          chapters[currentChapterIndex].section
+            ? chapters[currentChapterIndex].section.push(block)
+            : (chapters[currentChapterIndex].section = [block])
         }
-      });
+      })
+      currentCourse.value.chapters = chapters ? chapters : []
     } catch (error) {
       console.error(error)
     }
   }
-
 
   return {
     getCurrentCourse,

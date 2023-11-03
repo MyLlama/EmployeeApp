@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
-import { useUserStore } from '../stores/user'
-import { onMounted } from 'vue'
+  import { storeToRefs } from 'pinia'
+  import { useUserStore } from '../stores/user'
+  import { onMounted } from 'vue'
 
-const { user } = storeToRefs(useUserStore())
-const { fetchUserProfile } = useUserStore()
+  const { user } = storeToRefs(useUserStore())
+  const { fetchUserProfile } = useUserStore()
 
-onMounted(async () => {
-  await fetchUserProfile()
-})
+  onMounted(async () => {
+    await fetchUserProfile()
+  })
 </script>
 
 <template>
@@ -25,6 +25,7 @@ onMounted(async () => {
     </v-card-item>
   </v-card>
 </template>
+
 <style scoped>
 #user-name {
   font-family: 'Plus Jakarta Sans', sans-serif;

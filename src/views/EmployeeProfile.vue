@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import UserProfile from '../components/UserProfile.vue'
-import UserStats from '../components/userStats.vue'
+import UserStats from '../components/UserStats.vue'
 import QuickActions from '../components/QuickActions.vue'
 import MatrixMap from '../components/MatrixMap.vue'
 import { isMobile } from '../utilities/helper'

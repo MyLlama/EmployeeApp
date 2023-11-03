@@ -5,9 +5,14 @@ import { storeToRefs } from "pinia";
 import { ref } from 'vue'
 import smiley from '../assets/images/Smiley.svg'
 import { isMobile } from '../utilities/helper'
+import { useCmsStore } from '../stores/cms'
+import { useCourseStore } from '../stores/courses'
 
+const { getCurrentCourse } = useCourseStore();
+const { activityData } = useCmsStore();
 const { fetchUserProfile } = useUserStore();
 const { user } = storeToRefs(useUserStore())
+const { currentCourse } = storeToRefs(useCourseStore())
 const width = ref(isMobile() ? window.innerWidth - 48 : 600);
 
 function getGreetingMessage() {
@@ -23,8 +28,13 @@ function getGreetingMessage() {
   }
 }
 
+const activity = ref()
+
 onMounted(async () => {
   await fetchUserProfile();
+  activity.value = await activityData();
+  await getCurrentCourse();
+  console.log(currentCourse.value)
 })
 </script>
 
@@ -42,9 +52,20 @@ onMounted(async () => {
   <v-row>
     <v-col>
       <v-sheet class="px-6 py-2">
-        <video class="ma-auto rounded-xl" :width="width" :height="width" controls autoplay>
-          <source src="http://13.235.49.69:1337/uploads/Untitled_video_f43759613c.mp4" type="video/mp4">'
+        <video v-if="activity?.type === 'video'" :poster="activity?.media.thumbnail" class="ma-auto rounded-xl" :width="width" :height="width-50" controls autoplay>
+          <source :src="activity?.media.data" type="video/mp4">'
         </video>
+      
+        <video controls :width="width" :height="width-50" v-else-if="activity?.type === 'audio'" :poster="activity?.media.thumbnail">
+          <source :src="activity?.media.data" type= 'audio/mp3'>
+        </video>
+
+        <v-carousel :width="width" :height="width-50"  hide-delimiters v-else class="ma-auto rounded-xl">
+          <v-carousel-item v-for="item in activity?.media" :key="item"
+            :src="item"
+            cover
+          />
+        </v-carousel>
       </v-sheet>
     </v-col>
 
@@ -77,19 +98,16 @@ onMounted(async () => {
         </v-card-item>
 
         <v-card-item>
-          <v-list v-for="n in 3" :key="n">
+          <v-list v-for="chapter in 3" :key="chapter">
             <v-list-item class="rounded-lg" variant="tonal">
-              <template v-slot:prepend>
-                <v-checkbox-btn :disabled="true"></v-checkbox-btn>
-              </template>
-              Emotional Decision-Video Session
+              {{ currentCourse.chapters[chapter]?.display_name }}
             </v-list-item>
           </v-list>
         </v-card-item>
 
         <v-card-actions>
           <v-card-item>
-            <p class="">5 Pending Items</p>
+            <p>{{ currentCourse.chapters.length - 3 }} Pending Items</p>
           </v-card-item>
 
           <v-spacer></v-spacer>
@@ -100,7 +118,27 @@ onMounted(async () => {
         </v-card-actions>
       </v-card>
     </v-col>
-  </v-row>
+    </v-row>
+    <v-row>
+      <v-col cols="6">
+      <v-sheet class="px-6 py-2">
+        <video v-if="activity?.type === 'video'" :poster="activity?.media.thumbnail" class="ma-auto rounded-xl" :width="width" :height="width-50" controls autoplay>
+          <source :src="activity?.media.data" type="video/mp4">'
+        </video>
+      
+        <video controls :width="width" :height="width-50" v-else-if="activity?.type === 'audio'" :poster="activity?.media.thumbnail">
+          <source :src="activity?.media.data" type= 'audio/mp3'>
+        </video>
+
+        <v-carousel :width="width" :height="width-50"  hide-delimiters v-else class="ma-auto rounded-xl">
+          <v-carousel-item v-for="item in activity?.media" :key="item"
+            :src="item"
+            cover
+          />
+        </v-carousel>
+      </v-sheet>
+    </v-col>
+    </v-row>
 </template>
 <style>
 .activity-card {
@@ -113,5 +151,8 @@ onMounted(async () => {
 
 .checklist-card {
   border: 2px solid #d0cccc;
+}
+#player {
+  width: 100%;
 }
 </style>

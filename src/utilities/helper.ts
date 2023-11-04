@@ -17,7 +17,7 @@ function getViewsList() {
     {
       name: 'Learning',
       icon: 'Colorfilter',
-      route: ''
+      route: '/learning'
     },
     {
       name: 'Profile',

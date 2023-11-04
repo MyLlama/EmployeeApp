@@ -81,12 +81,14 @@ export const useCourseStore = defineStore('course', () => {
           chapters !== undefined &&
           chapters[currentChapterIndex].children.includes(block.id)
         ) {
+          block.start = blocksDetailResp.data.blocks[block.id].start
           chapters[currentChapterIndex].section
             ? chapters[currentChapterIndex].section.push(block)
             : (chapters[currentChapterIndex].section = [block])
         }
       })
       currentCourse.value.chapters = chapters
+      console.log(chapters)
     } catch (error) {
       console.error(error)
     }

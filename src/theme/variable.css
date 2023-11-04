@@ -1,5 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Albert+Sans&family=Dosis:wght@700&family=Plus+Jakarta+Sans&display=swap');
 
+:root {
+  --btn-color: #f89854;
+  --link-color: #d65a03;
+  --text-color: #000;
+
+  /* current course  */
+  --current-course-background: #f4f8fc;
+  --curent-course-progress-bar-color: #3473ab;
+  --current-course-bottom-border: #a9c9d6;
+}
 .pointer {
   cursor: pointer;
 }

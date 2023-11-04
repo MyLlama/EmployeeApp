@@ -28,11 +28,11 @@ const dynamicDates = computed(() => {
 </script>
 
 <template>
-  <v-card class="d-flex justify-space-between ma-4 pa-2 elevation-0">
+  <v-card class="d-flex justify-space-between pa-2 elevation-0">
     <div
       v-for="date in dynamicDates"
       :key="date.number"
-      class="py-2 px-3 mr-2 text-center rounded-pill text-body-1"
+      class="py-3 px-3 mr-3 text-center rounded-pill text-body-1"
       :class="{ highlighted: date.number === todayDate }"
     >
       {{ date.day }}

@@ -15,9 +15,11 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@types/chart.js": "^2.9.39",
     "@vueuse/core": "^10.5.0",
     "axios": "^1.5.1",
     "colorthief": "^2.4.0",
+    "chart.js": "^4.4.0",
     "install": "^0.13.0",
     "pinia": "^2.1.6",
     "vue": "^3.3.4",

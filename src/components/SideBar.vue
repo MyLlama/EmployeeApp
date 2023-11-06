@@ -1,12 +1,21 @@
 <script setup lang="ts">
 import { getViewsList } from '../utilities/helper'
+import { useRouter } from 'vue-router'
+
 const views = getViewsList()
+const router = useRouter()
 </script>
 
 <template>
   <v-navigation-drawer permanent>
     <v-list nav>
-      <v-list-item v-for="view in views" :key="view.name" :title="$t(view.name)" :value="view.name">
+      <v-list-item
+        v-for="view in views"
+        :key="view.name"
+        :title="$t(view.name)"
+        :value="view.name"
+        @click="router.push(view.route)"
+      >
         <template v-slot:prepend>
           <VsxIcon :iconName="view.icon" :size="20" type="linear" class="mx-2" />
         </template>

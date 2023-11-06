@@ -7,7 +7,8 @@ const currentCourse = ref({
   start_date: '',
   end_date: '',
   chapters: <any>[],
-  course_name: ''
+  course_name: '',
+  course_img:''
 })
 
 const { authToken } = storeToRefs(useAuthStore())
@@ -38,6 +39,7 @@ export const useCourseStore = defineStore('course', () => {
       currentCourse.value.course_name = course.course_details.course_name
 
       await fetchCourseDetails(currentCourseId)
+      await getCourseImg(currentCourseId)
     } catch (error) {
       console.error(error)
     }
@@ -65,7 +67,6 @@ export const useCourseStore = defineStore('course', () => {
           }
         }
       )
-
       let currentChapterIndex: number
 
       const blocks = Object.values(response.data.course_blocks.blocks)
@@ -81,6 +82,7 @@ export const useCourseStore = defineStore('course', () => {
           chapters !== undefined &&
           chapters[currentChapterIndex].children.includes(block.id)
         ) {
+          block.start = blocksDetailResp.data.blocks[block.id].start
           chapters[currentChapterIndex].section
             ? chapters[currentChapterIndex].section.push(block)
             : (chapters[currentChapterIndex].section = [block])
@@ -92,9 +94,20 @@ export const useCourseStore = defineStore('course', () => {
     }
   }
 
+  const getCourseImg = async (courseId: string): Promise<any> => {
+    try {
+      const response = await axios.get(`${baseUrl}/api/courses/v1/courses/${courseId}`, { headers })
+      const courseImage =  baseUrl+response.data.media.course_image.uri
+      currentCourse.value.course_img = courseImage
+    } catch(error) {
+      console.log(error)
+    }
+  }
+
   return {
     getCurrentCourse,
     fetchCourseDetails,
+    getCourseImg,
     currentCourse
   }
 })

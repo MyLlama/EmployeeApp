@@ -45,7 +45,7 @@ const sections = () => {
           </v-col>
           <v-spacer></v-spacer>
           <v-col>
-            <v-card-item class="flex d-flex  pa-0 mt-3">
+            <v-card-item class="d-flex  pa-0 mt-3">
               <v-chip color="black" class="text-body-2" size="x-small" label variant="tonal">
                 Before
               </v-chip>
@@ -66,9 +66,5 @@ const sections = () => {
   background: var(--learning-module-card);
   box-shadow: var(--learning-module-card-box-shadow);
   font-family: 'Albert Sans', sans-serif;
-}
-.flex{
-  border: 1px solid red;
-  width: 100px;
 }
 </style>

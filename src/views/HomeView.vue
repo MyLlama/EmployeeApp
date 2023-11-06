@@ -28,6 +28,13 @@ function getGreetingMessage() {
   }
 }
 
+const sections = () => {
+  return currentCourse.value.chapters.reduce((sections: any, chapter: any) => {
+    chapter.section?.map((section: any) => sections.push(section))
+    return sections
+  }, [])
+}
+
 const activity = ref()
 
 onMounted(async () => {
@@ -112,17 +119,15 @@ onMounted(async () => {
           <v-card-title>Check List</v-card-title>
         </v-card-item>
 
-        <v-card-item>
-          <v-list v-for="chapter in 3" :key="chapter">
-            <v-list-item class="rounded-lg" variant="tonal">
-              {{ currentCourse.chapters[chapter]?.display_name }}
-            </v-list-item>
-          </v-list>
-        </v-card-item>
+        <v-list class="mx-4">
+          <v-list-item class="rounded-lg my-2" variant="tonal" v-for="index in 4" :key="index">
+            {{ sections()[index]?.display_name }}
+          </v-list-item>
+        </v-list>
 
         <v-card-actions>
           <v-card-item>
-            <p>{{ currentCourse.chapters.length - 3 }} Pending Items</p>
+            <p>{{ sections().length - 4 }} Pending Items</p>
           </v-card-item>
 
           <v-spacer></v-spacer>

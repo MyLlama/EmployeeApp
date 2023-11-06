@@ -14,6 +14,19 @@ export const useAuthStore = defineStore('auth', () => {
 
   // useStorage returns a RemovableRef, which is a special type of reference that is used for reactive state management in Vue.
   // Router is not available at store level
+  const setTimer = (expiresIn: number, router: Router) => {
+    clearTimer()
+    timer = setTimeout(() => {
+      logout(router)
+    }, expiresIn)
+  }
+
+  const clearTimer = () => {
+    if (timer) {
+      clearTimeout(timer)
+      timer = null
+    }
+  }
 
   const userLogin = async (username: any, password: string, router: Router): Promise<void> => {
     try {
@@ -29,9 +42,7 @@ export const useAuthStore = defineStore('auth', () => {
       userId.value = username
       const expiresIn = +response.data.expires_in * 1000 // Convert to milliseconds
       validityDuration.value = Date.now() + expiresIn // Calculate the future time in milliseconds when the token will expire.
-      timer = setTimeout(() => {
-        logout(router)
-      }, expiresIn)
+      setTimer(expiresIn, router)
     } catch (error) {
       console.error(error)
     }
@@ -48,9 +59,7 @@ export const useAuthStore = defineStore('auth', () => {
     authToken.value = ''
     userId.value = ''
     validityDuration.value = 0
-    if (timer !== null) {
-      clearTimeout(timer)
-    }
+    clearTimer()
     router.replace({ name: 'login' })
   }
 

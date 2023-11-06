@@ -11,7 +11,7 @@ import { isMobile } from '../utilities/helper'
   <v-row>
     <v-col cols="12" md="6">
       <UserStats />
-      <QuickActions class="ma-8" v-if="!isMobile()"></QuickActions>
+      <QuickActions class="ma-8" v-if="!isMobile()" />
     </v-col>
     <v-col cols="12" md="6">
       <MatrixMap />

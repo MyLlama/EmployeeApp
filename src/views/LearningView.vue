@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import MonthlyCalender from '@/components/MonthlyCalender.vue';
+import MonthlyCalender from '@/components/MonthlyCalender.vue'
 </script>
 
 <template>

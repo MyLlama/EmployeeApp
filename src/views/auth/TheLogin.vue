@@ -92,14 +92,13 @@ const passwordValidation = [(password: any) => !!password || 'Password is requir
                   <p class="forgot-password-btn">{{ $t('ForgotPassword') }}</p>
                 </div>
 
-                <v-btn
+                <BaseButton
                   id="submit-login-details-button"
-                  class="d-flex text-capitalize my-6 mx-auto rounded-pill"
+                  buttonClass="d-flex text-capitalize my-6 mx-auto rounded-pill"
                   type="submit"
-                  color="var(--btn-color)"
                 >
                   Login
-                </v-btn>
+                </BaseButton>
               </v-form>
             </v-sheet>
           </v-col>
@@ -107,7 +106,7 @@ const passwordValidation = [(password: any) => !!password || 'Password is requir
       </v-col>
     </v-row>
     <div>
-      <v-snackbar v-model="showSnackbar" color="var(--btn-color)">
+      <v-snackbar v-model="showSnackbar" color="var(--button-danger)">
         {{ $t('InvalidCredentials') }}
         <template v-slot:actions>
           <v-btn color="white" variant="text" @click="showSnackbar = false">Close</v-btn>
@@ -122,6 +121,19 @@ const passwordValidation = [(password: any) => !!password || 'Password is requir
   width: 13rem;
   font-size: 1.25rem;
   color: white !important;
+  border: 1px solid var(--button-primary, #ff6839);
+  background: radial-gradient(
+      92.93% 98.54% at 18.36% -18.51%,
+      rgba(0, 0, 0, 0.16) 0%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    radial-gradient(
+      94.6% 106.8% at 71.33% 102.3%,
+      rgba(255, 255, 255, 0.35) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    var(--button-primary, #ff6839);
+  box-shadow: 0px 9px 8px -3px rgba(237, 77, 24, 0.28);
 }
 
 p {

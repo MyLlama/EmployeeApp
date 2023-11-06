@@ -49,14 +49,22 @@ export const useCourseStore = defineStore('course', () => {
 
       const response = await axios.get(url, { headers })
       let chapters: any[]
-      const courseBlock = Object.values(response.data.course_blocks.blocks).find((block: any) => block.type === 'course') as any
+      const courseBlock = Object.values(response.data.course_blocks.blocks).find(
+        (block: any) => block.type === 'course'
+      ) as any
       const courseBlockId = courseBlock.id
 
-      const blocksDetailResp = await axios.get(`${baseUrl}/api/courses/v2/blocks/${courseBlockId}`, { headers, params: {
-        depth:'all',
-        requested_fields:'start',
-        all_blocks:true
-      }})
+      const blocksDetailResp = await axios.get(
+        `${baseUrl}/api/courses/v2/blocks/${courseBlockId}`,
+        {
+          headers,
+          params: {
+            depth: 'all',
+            requested_fields: 'start',
+            all_blocks: true
+          }
+        }
+      )
 
       let currentChapterIndex: number
 

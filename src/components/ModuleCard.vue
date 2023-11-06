@@ -11,8 +11,6 @@ onMounted(async () => {
 })
 const sections = () => {
   const sections = currentCourse.value.chapters.reduce((sections: any, chapter: any) => {
-
-
     chapter.section?.map((section: any) => {
       Date.parse(section.start) <= Date.now() && Date.parse(section.due) >= Date.now() && sections.push(section)
       return section;
@@ -22,7 +20,6 @@ const sections = () => {
   return sections;
 }
 
-console.log('sections', sections())
 
 
 </script>
@@ -33,7 +30,7 @@ console.log('sections', sections())
       <v-card class="mx-4 rounded-xl py-3 mt-3" v-for="section in sections()" :key="section.id" id="learning-module-card">
         <v-row>
           <v-col>
-            <v-card-title>{{ section.display_name }}</v-card-title>
+            <v-card-title class="text-body-1">{{ section.display_name }}</v-card-title>
             <v-card-item>
               <VsxIcon iconName="Paperclip2" class="mr-2" :size="18" type="linear" />
               <span class="pb-1">{{ section?.type }}</span>

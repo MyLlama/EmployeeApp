@@ -88,7 +88,6 @@ export const useCourseStore = defineStore('course', () => {
         }
       })
       currentCourse.value.chapters = chapters
-      console.log(chapters)
     } catch (error) {
       console.error(error)
     }

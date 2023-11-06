@@ -17,7 +17,7 @@ import i18n from './i18n.ts'
 import BaseButton from './components/BaseButton.vue'
 
 // Iconsax
-// import { VsxIcon } from 'vue-iconsax'
+import { VsxIcon } from 'vue-iconsax'
 
 const vuetify = createVuetify({
   components,
@@ -26,7 +26,7 @@ const vuetify = createVuetify({
 const app = createApp(App)
 const pinia = createPinia()
 
-// app.component('VsxIcon', VsxIcon)
+app.component('VsxIcon', VsxIcon)
 app.component('BaseButton', BaseButton)
 app.use(vuetify)
 app.use(pinia)

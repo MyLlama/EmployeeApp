@@ -6,9 +6,9 @@ import { ref } from 'vue'
 import smiley from '../assets/images/Smiley.svg'
 import { isMobile } from '../utilities/helper'
 
-const { fetchUserProfile } = useUserStore();
+const { fetchUserProfile } = useUserStore()
 const { user } = storeToRefs(useUserStore())
-const width = ref(isMobile() ? window.innerWidth - 48 : 600);
+const width = ref(isMobile() ? window.innerWidth - 48 : 600)
 
 function getGreetingMessage() {
   const currentTime = new Date()
@@ -24,7 +24,7 @@ function getGreetingMessage() {
 }
 
 onMounted(async () => {
-  await fetchUserProfile();
+  await fetchUserProfile()
 })
 </script>
 
@@ -43,7 +43,11 @@ onMounted(async () => {
     <v-col>
       <v-sheet class="px-6 py-2">
         <video class="ma-auto rounded-xl" :width="width" :height="width" controls autoplay>
-          <source src="http://13.235.49.69:1337/uploads/Untitled_video_f43759613c.mp4" type="video/mp4">'
+          <source
+            src="http://13.235.49.69:1337/uploads/Untitled_video_f43759613c.mp4"
+            type="video/mp4"
+          />
+          '
         </video>
       </v-sheet>
     </v-col>

@@ -10,8 +10,8 @@
 
 :root {
   /* This is for your main call-to-action button, used in the most important interactions. */
-  --button-primary:#FF6839;
-    /* Used for less important actions, complementing the primary button. */
+  --button-primary: #ff6839;
+  /* Used for less important actions, complementing the primary button. */
   --button-secondary: #f89854;
   /* Even less emphasis than the secondary, for less crucial actions. */
   --button-tertiary: #000;
@@ -24,10 +24,9 @@
   /* To alert users, typically used before performing potentially harmful actions */
   --button-warning: blue;
   /* For buttons that are not currently interactive. */
-  --button-disabled:black;
-   /* For buttons that change state, like on/off switches. */
-   --button-toggle: pink;
-
+  --button-disabled: black;
+  /* For buttons that change state, like on/off switches. */
+  --button-toggle: pink;
 
   /* User Stats */
   --user-stats-background-color: linear-gradient(

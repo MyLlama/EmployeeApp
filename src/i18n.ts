@@ -22,7 +22,10 @@ const messages = {
     Saved: 'Saved',
     Courses: 'Courses',
     Settings: 'Settings',
-    Logout: 'Logout'
+    Logout: 'Logout',
+    ForToday: 'For Today',
+    InProgressTasks: 'In-progress tasks',
+    CurrentCourse: 'Current Course'
   }
 }
 

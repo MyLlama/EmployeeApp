@@ -28,7 +28,7 @@ const dynamicDates = computed(() => {
 </script>
 
 <template>
-  <v-card class="d-flex justify-space-between pa-2 elevation-0">
+  <v-card class="calender d-flex justify-space-between pa-2 elevation-0 pl-10">
     <div
       v-for="date in dynamicDates"
       :key="date.number"

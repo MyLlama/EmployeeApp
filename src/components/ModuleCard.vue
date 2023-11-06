@@ -45,11 +45,11 @@ const sections = () => {
           </v-col>
           <v-spacer></v-spacer>
           <v-col>
-            <v-card-item class="d-flex pa-3">
+            <v-card-item class="flex d-flex  pa-0 mt-3">
               <v-chip color="black" class="text-body-2" size="x-small" label variant="tonal">
                 Before
               </v-chip>
-              <p class="text-h6 text-sm-h5 mt-2">
+              <p class="text-h5 text-sm-h4 mt-2">
                 {{ DateTime.fromISO(section.due).toFormat('dd LLL') }}
               </p>
             </v-card-item>
@@ -66,5 +66,9 @@ const sections = () => {
   background: var(--learning-module-card);
   box-shadow: var(--learning-module-card-box-shadow);
   font-family: 'Albert Sans', sans-serif;
+}
+.flex{
+  border: 1px solid red;
+  width: 100px;
 }
 </style>

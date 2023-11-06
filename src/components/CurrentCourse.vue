@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import Group from '../assets/images/Group.svg'
+// import Group from '../assets/images/Group.svg'
 import { isMobile } from '../utilities/helper'
 import { useCourseStore } from '../stores/courses'
 import { storeToRefs } from 'pinia'
 import { onMounted } from 'vue'
 const { currentCourse } = storeToRefs(useCourseStore())
 const { getCurrentCourse } = useCourseStore()
+
 import { DateTime } from 'luxon'
 
 onMounted(async () => {
@@ -19,7 +20,7 @@ onMounted(async () => {
 
       <v-card class="mx-4 rounded-xl elevation-0" id="current-course-tasks">
         <v-card-item>
-          <v-img :width="isMobile() ? '' : '35%'" :src="Group" class="rounded-xl"></v-img>
+          <v-img :width="isMobile() ? '' : '35%'" :src="(currentCourse?.course_img)" class="rounded-xl"></v-img>
         </v-card-item>
 
         <v-card-title>{{ currentCourse?.course_name }}</v-card-title>

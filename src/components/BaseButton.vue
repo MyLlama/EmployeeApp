@@ -5,8 +5,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
-
 // Define the variant type with the specific string literals and undefined
 type VariantType = 'flat' | 'text' | 'elevated' | 'tonal' | 'outlined' | 'plain' | undefined
 

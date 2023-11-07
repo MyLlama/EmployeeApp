@@ -8,7 +8,7 @@ const currentCourse = ref({
   end_date: '',
   chapters: <any>[],
   course_name: '',
-  course_img:''
+  course_img: ''
 })
 
 const { authToken } = storeToRefs(useAuthStore())
@@ -97,9 +97,9 @@ export const useCourseStore = defineStore('course', () => {
   const getCourseImg = async (courseId: string): Promise<any> => {
     try {
       const response = await axios.get(`${baseUrl}/api/courses/v1/courses/${courseId}`, { headers })
-      const courseImage =  baseUrl+response.data.media.course_image.uri
+      const courseImage = baseUrl + response.data.media.course_image.uri
       currentCourse.value.course_img = courseImage
-    } catch(error) {
+    } catch (error) {
       console.log(error)
     }
   }

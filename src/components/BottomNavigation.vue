@@ -8,7 +8,7 @@ const router = useRouter()
 <template>
   <v-bottom-navigation>
     <v-btn value="recent" v-for="view in views" :key="view.name" @click="router.push(view.route)">
-      <VsxIcon :iconName="view.icon" :size="20" type="linear" />
+      <img :src="view.icon" />
       <span>{{ $t(view.name) }}</span>
     </v-btn>
   </v-bottom-navigation>

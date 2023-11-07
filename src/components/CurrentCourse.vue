@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// import Group from '../assets/images/Group.svg'
 import { isMobile } from '../utilities/helper'
 import { useCourseStore } from '../stores/courses'
 import { storeToRefs } from 'pinia'
@@ -20,13 +19,17 @@ onMounted(async () => {
 
       <v-card class="mx-4 rounded-xl elevation-0" id="current-course-tasks">
         <v-card-item>
-          <v-img :width="isMobile() ? '' : '35%'" :src="(currentCourse?.course_img)" class="rounded-xl"></v-img>
+          <v-img
+            :width="isMobile() ? '' : '35%'"
+            :src="currentCourse?.course_img"
+            class="rounded-xl"
+          ></v-img>
         </v-card-item>
 
         <v-card-title>{{ currentCourse?.course_name }}</v-card-title>
 
         <v-card-text class="d-flex">
-          <VsxIcon iconName="Calendar2" :size="17" color="gray" type="bold" />
+          <img style="height: 21px" src="../assets/icons/calender-dates-icon.svg" />
           <v-card-subtitle
             >{{ DateTime.fromISO(currentCourse?.start_date).toFormat('dd LLLL') }} -
             {{ DateTime.fromISO(currentCourse?.end_date).toFormat('dd LLLL') }}</v-card-subtitle
@@ -54,7 +57,7 @@ onMounted(async () => {
                   <span class="mr-2">{{ index + 1 }}</span>
                   <span>{{ module.display_name }}</span>
                   <template v-slot:append>
-                    <VsxIcon iconName="Notepad2" :size="22" type="linear" />
+                    <img src="../assets/icons/notes-icon.svg" />
                   </template>
                 </v-list-item>
               </v-list>

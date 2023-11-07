@@ -17,7 +17,7 @@ const router = useRouter()
         @click="router.push(view.route)"
       >
         <template v-slot:prepend>
-          <VsxIcon :iconName="view.icon" :size="20" type="linear" class="mx-2" />
+          <img style="height: 21px" :src="view.icon" class="mx-2" />
         </template>
       </v-list-item>
     </v-list>
@@ -28,7 +28,7 @@ const router = useRouter()
         <v-list>
           <v-list-item title="Setting">
             <template v-slot:prepend>
-              <VsxIcon iconName="Setting2" :size="20" type="linear" class="mx-2" />
+              <img style="height: 21px" src="../assets/icons/setting-icon.svg" class="mx-2" />
             </template>
           </v-list-item>
         </v-list>

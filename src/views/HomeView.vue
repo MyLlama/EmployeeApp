@@ -109,7 +109,7 @@ onMounted(async () => {
           <v-spacer></v-spacer>
           <div class="px-6 d-flex">
             <p class="text-caption mr-2">Try now</p>
-            <VsxIcon iconName="ArrowSquareRight" :size="20" type="linear" />
+            <img src="../assets/icons/arrow-right.svg" />
           </div>
         </v-card-actions>
       </v-card>

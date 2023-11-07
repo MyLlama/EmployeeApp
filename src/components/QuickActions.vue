@@ -35,7 +35,7 @@ const logout = (quickAction: any) => {
           width="60"
           :variant="quickAction.variant"
         >
-          <VsxIcon :iconName="quickAction.icon" :size="20" type="linear" class="mx-2" />
+          <img :src="quickAction.icon" class="mx-2" style="height: 21px" />
         </BaseButton>
 
         <span class="quick-action-button-name" :class="isMobile() ? 'ml-4' : ''">{{

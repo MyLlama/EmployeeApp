@@ -39,13 +39,13 @@ const sections = () => {
             }}</v-card-title>
 
             <v-card-item>
-              <VsxIcon iconName="Paperclip2" class="mr-2" :size="18" type="linear" />
+              <img class="mr-2" src="../assets/icons/link-icon.svg" />
               <span class="pb-1 font-weight-normal text-body-1">{{ section?.type }}</span>
             </v-card-item>
           </v-col>
           <v-spacer></v-spacer>
           <v-col>
-            <v-card-item class="d-flex  pa-0 mt-3">
+            <v-card-item class="d-flex justify-end pa-0 mt-3 mr-3">
               <v-chip color="black" class="text-body-2" size="x-small" label variant="tonal">
                 Before
               </v-chip>

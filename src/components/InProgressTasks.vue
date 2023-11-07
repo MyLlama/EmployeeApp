@@ -7,14 +7,13 @@
       <v-card class="mx-4 rounded-xl py-3" id="learning-module-card">
         <v-breadcrumbs :items="['Foo', 'Bar', 'Fizz']">
           <template v-slot:divider>
-            <VsxIcon class="mt-2" iconName="ArrowRight2" :size="20" type="linear" />
+            <img class="mt-2" src="../assets/icons/arrow-right2.svg" />
           </template>
         </v-breadcrumbs>
         <v-row>
           <v-col>
             <v-card-title>Course Orientations</v-card-title>
             <v-card-item>
-              <VsxIcon iconName="Paperclip2" class="mr-2" :size="18" type="linear" />
               <span class="pb-1">Meeting</span>
             </v-card-item>
           </v-col>

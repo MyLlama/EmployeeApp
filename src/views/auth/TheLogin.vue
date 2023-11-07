@@ -78,11 +78,14 @@ const passwordValidation = [(password: any) => !!password || 'Password is requir
                   :rules="passwordValidation"
                 >
                   <template v-slot:append-inner>
-                    <VsxIcon
-                      :iconName="`${showPassword ? 'Eye' : 'EyeSlash'}`"
-                      :size="20"
-                      type="linear"
-                      class="pointer"
+                    <img
+                      v-if="showPassword"
+                      src="../../assets/icons/eye-icon.svg"
+                      @click="showPassword = !showPassword"
+                    />
+                    <img
+                      v-else
+                      src="../../assets/icons/profile-icon.svg"
                       @click="showPassword = !showPassword"
                     />
                   </template>

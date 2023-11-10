@@ -11,7 +11,7 @@ export const useCmsStore = defineStore('cms', () => {
   const activityData = async (): Promise<any> => {
     try {
       const response = await axios.get(url, { headers })
-      const randomData = Math.floor(Math.random() * response.data.data.length)
+      const randomData = Math.floor(Math.random() * response?.data.data.length)
       const type = response.data.data[randomData].attributes.type
       let media
       if (type === 'video' || type === 'audio') {

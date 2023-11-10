@@ -8,13 +8,14 @@ import { isMobile } from '../utilities/helper'
 import { useCmsStore } from '../stores/cms'
 import { useCourseStore } from '../stores/courses'
 import { DateTime } from 'luxon'
+import ImageCard from '@/components/ImageCard.vue'
 
 const { getCurrentCourse } = useCourseStore()
 const { activityData } = useCmsStore()
 const { fetchUserProfile } = useUserStore()
 const { user } = storeToRefs(useUserStore())
 const { currentCourse } = storeToRefs(useCourseStore())
-const width = ref(isMobile() ? window.innerWidth - 96 : 600)
+const width = ref(isMobile() ? window.innerWidth - 96 : 480)
 
 function getGreetingMessage() {
   const currentTime = new Date()
@@ -72,28 +73,42 @@ onMounted(async () => {
   <v-row>
     <v-col v-if="activity?.type">
       <v-sheet class="px-6 py-2">
-        <v-card class="rounded-xl pa-2">
+        <ImageCard class="rounded-xl pa-2" :image-url="activity.type ==='images' ? activity?.media[0] : activity?.media.thumbnail">
+
           <v-card-title>
             Mindfulness Moment
           </v-card-title>
+
           <v-card-subtitle>
             Let the soothing waves wash away stress
           </v-card-subtitle>
+
           <v-card-item class="my-3">
             <video
               v-if="activity?.type === 'video'"
               :poster="activity?.media.thumbnail"
               class="ma-auto rounded-xl"
               :width="width"
-              :height="width - 200"
+              :height="width - 150"
               controls
-              autoplay
+              autoplay  
             >
               <source :src="activity?.media.data" type="video/mp4" />
             </video>
+
+            <video
+              controls
+              :width="width"
+              :height="width - 150"
+              v-else-if="activity?.type === 'audio'"
+              :poster="activity?.media.thumbnail"
+            >
+              <source :src="activity?.media.data" type="audio/mp3" />
+            </video>
+
             <v-carousel
               :width="width"
-              :height="width - 200"
+              :height="width - 150"
               hide-delimiters
               v-else
               class="ma-auto rounded-xl"
@@ -101,8 +116,7 @@ onMounted(async () => {
               <v-carousel-item v-for="item in activity?.media" :key="item" :src="item" cover />
             </v-carousel>
           </v-card-item>
-          
-        </v-card>        
+        </ImageCard>       
       </v-sheet>
     </v-col>
 
@@ -191,39 +205,52 @@ onMounted(async () => {
     </v-col>
   </v-row>
   <v-row>
-    <v-col v-if="activity?.type" cols="6">
+    <v-col v-if="activity?.type">
       <v-sheet class="px-6 py-2">
-        <video
-          v-if="activity?.type === 'video'"
-          :poster="activity?.media.thumbnail"
-          class="ma-auto rounded-xl"
-          :width="width"
-          :height="width - 50"
-          controls
-          autoplay
-        >
-          <source :src="activity?.media.data" type="video/mp4" />
-        </video>
+        <ImageCard class="rounded-xl pa-2" :image-url="activity.type ==='images' ? activity?.media[0] : activity?.media.thumbnail">
 
-        <video
-          controls
-          :width="width"
-          :height="width - 50"
-          v-else-if="activity?.type === 'audio'"
-          :poster="activity?.media.thumbnail"
-        >
-          <source :src="activity?.media.data" type="audio/mp3" />
-        </video>
+          <v-card-title>
+            Mindfulness Moment
+          </v-card-title>
 
-        <v-carousel
-          :width="width"
-          :height="width - 50"
-          hide-delimiters
-          v-else
-          class="ma-auto rounded-xl"
-        >
-          <v-carousel-item v-for="item in activity?.media" :key="item" :src="item" cover />
-        </v-carousel>
+          <v-card-subtitle>
+            Let the soothing waves wash away stress
+          </v-card-subtitle>
+
+          <v-card-item class="my-3">
+            <video
+              v-if="activity?.type === 'video'"
+              :poster="activity?.media.thumbnail"
+              class="ma-auto rounded-xl"
+              :width="width"
+              :height="width - 200"
+              controls
+              autoplay
+            >
+              <source :src="activity?.media.data" type="video/mp4" />
+            </video>
+
+            <video
+              controls
+              :width="width"
+              :height="width - 150"
+              v-else-if="activity?.type === 'audio'"
+              :poster="activity?.media.thumbnail"
+            >
+              <source :src="activity?.media.data" type="audio/mp3" />
+            </video>
+
+            <v-carousel
+              :width="width"
+              :height="width - 150"
+              hide-delimiters
+              v-else
+              class="ma-auto rounded-xl"
+            >
+              <v-carousel-item v-for="item in activity?.media" :key="item" :src="item" cover />
+            </v-carousel>
+          </v-card-item>
+        </ImageCard>       
       </v-sheet>
     </v-col>
   </v-row>

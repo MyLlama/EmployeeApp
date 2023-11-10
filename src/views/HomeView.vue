@@ -74,12 +74,15 @@ onMounted(async () => {
     <v-col v-if="activity?.type">
       <v-sheet class="px-6 py-2">
         <ImageCard class="rounded-xl pa-2" :image-url="activity.type ==='images' ? activity?.media[0] : activity?.media.thumbnail">
+
           <v-card-title>
             Mindfulness Moment
           </v-card-title>
+
           <v-card-subtitle>
             Let the soothing waves wash away stress
           </v-card-subtitle>
+
           <v-card-item class="my-3">
             <video
               v-if="activity?.type === 'video'"
@@ -88,8 +91,7 @@ onMounted(async () => {
               :width="width"
               :height="width - 150"
               controls
-              autoplay
-              
+              autoplay  
             >
               <source :src="activity?.media.data" type="video/mp4" />
             </video>
@@ -100,7 +102,6 @@ onMounted(async () => {
               :height="width - 150"
               v-else-if="activity?.type === 'audio'"
               :poster="activity?.media.thumbnail"
-              
             >
               <source :src="activity?.media.data" type="audio/mp3" />
             </video>
@@ -207,12 +208,15 @@ onMounted(async () => {
     <v-col v-if="activity?.type">
       <v-sheet class="px-6 py-2">
         <ImageCard class="rounded-xl pa-2" :image-url="activity.type ==='images' ? activity?.media[0] : activity?.media.thumbnail">
+
           <v-card-title>
             Mindfulness Moment
           </v-card-title>
+
           <v-card-subtitle>
             Let the soothing waves wash away stress
           </v-card-subtitle>
+
           <v-card-item class="my-3">
             <video
               v-if="activity?.type === 'video'"
@@ -222,7 +226,6 @@ onMounted(async () => {
               :height="width - 200"
               controls
               autoplay
-              
             >
               <source :src="activity?.media.data" type="video/mp4" />
             </video>
@@ -233,7 +236,6 @@ onMounted(async () => {
               :height="width - 150"
               v-else-if="activity?.type === 'audio'"
               :poster="activity?.media.thumbnail"
-              
             >
               <source :src="activity?.media.data" type="audio/mp3" />
             </video>

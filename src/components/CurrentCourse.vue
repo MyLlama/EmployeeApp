@@ -16,7 +16,6 @@ onMounted(async () => {
   <v-row>
     <v-col>
       <p class="pa-5">{{ $t('CurrentCourse') }}</p>
-
       <v-card class="mx-4 rounded-xl elevation-0" id="current-course-tasks">
         <v-card-item>
           <v-img
@@ -43,7 +42,7 @@ onMounted(async () => {
           ></v-progress-linear>
         </v-card-text>
 
-        <v-card-item class="">
+        <v-card-item>
           <v-row>
             <v-col
               class="mb-1"

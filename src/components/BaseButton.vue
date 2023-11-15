@@ -1,5 +1,5 @@
 <template>
-  <v-btn :color="color" :class="buttonClass" :variant="variant">
+  <v-btn :color="color" :class="buttonClass" :size="buttonSize" :variant="variant">
     <slot></slot>
   </v-btn>
 </template>
@@ -13,6 +13,7 @@ type VariantType = 'flat' | 'text' | 'elevated' | 'tonal' | 'outlined' | 'plain'
 defineProps({
   color: String,
   buttonClass: String,
+  buttonSize: String,
   variant: {
     type: String as () => VariantType,
     default: undefined

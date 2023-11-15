@@ -8,7 +8,9 @@ const currentCourse = ref({
   end_date: '',
   chapters: <any>[],
   course_name: '',
-  course_img: ''
+  course_img: '',
+  course_discription: '',
+  module_end_date: <any>[]
 })
 
 const { authToken } = storeToRefs(useAuthStore())
@@ -88,7 +90,20 @@ export const useCourseStore = defineStore('course', () => {
             : (chapters[currentChapterIndex].section = [block])
         }
       })
+
       currentCourse.value.chapters = chapters
+      console.log(chapters)
+      const dueDates = currentCourse.value.chapters.reduce((duedate, chapter) => {
+        const lastSection = chapter.section?.[chapter.section.length - 1]
+        if (lastSection && Date.parse(lastSection.due) >= Date.now()) {
+          duedate.push(lastSection.due)
+        } else if (chapter.section?.[0]) {
+          duedate.push(chapter.section[0].due)
+        }
+        return duedate
+      }, [])
+      currentCourse.value.module_end_date = dueDates
+      console.log(dueDates)
     } catch (error) {
       console.error(error)
     }
@@ -97,8 +112,8 @@ export const useCourseStore = defineStore('course', () => {
   const getCourseImg = async (courseId: string): Promise<any> => {
     try {
       const response = await axios.get(`${baseUrl}/api/courses/v1/courses/${courseId}`, { headers })
-      const courseImage = baseUrl + response.data.media.course_image.uri
-      currentCourse.value.course_img = courseImage
+      currentCourse.value.course_img = baseUrl + response.data.media.course_image.uri
+      currentCourse.value.course_discription = response.data.short_description
     } catch (error) {
       console.log(error)
     }

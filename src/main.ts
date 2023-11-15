@@ -9,6 +9,7 @@ import * as directives from 'vuetify/directives'
 import App from './App.vue'
 import router from './router/index.ts'
 import i18n from './i18n.ts'
+import '@mdi/font/css/materialdesignicons.css'
 
 // Since we will using global components everywhere, it is advisable to import them in main file
 // Global components

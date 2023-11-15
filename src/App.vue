@@ -5,7 +5,6 @@ import SideBar from './components/SideBar.vue'
 import Header from './components/TheHeader.vue'
 import { isMobile } from './utilities/helper'
 import { useAuthStore } from '@/stores/auth'
-
 const authStore = useAuthStore()
 </script>
 

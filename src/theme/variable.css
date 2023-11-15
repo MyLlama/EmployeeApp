@@ -43,7 +43,7 @@
     rgba(196, 222, 231, 0.82) 102.44%
   );
   --user-stats-card-border-color: #cce9eb;
-  --user-stats-card-border-color1: gray;
+  --user-stats-text-border-color2: #729b9e;
   --user-stats-title-color: rgb(46, 68, 92);
 
   /* Metric maps */
@@ -68,7 +68,7 @@
       rgba(255, 255, 255, 0) 100%
     ),
     #b1b4ff;
-  --learning-module-border: 2px solid #b1b4ff;
+  --learning-module-border: 0.13rem solid #b1b4ff;
   --learning-module-card-box-shadow: 0px 12px 10px -3px rgba(177, 180, 255, 0.3);
 
   /* CourseDetails page */
@@ -79,7 +79,7 @@
     ),
     #fff;
   --expansion-panel-course-progress-button-box-shadow: 0px 3px 5px -3px rgba(237, 77, 24, 0.23);
-  --expansion-panel-course-progress-button-border-radius:21px;
-  --expansion-panel-course-progress-button-color:white
-  
+  --expansion-panel-course-progress-button-border-radius: 1.32rem;
+  --expansion-panel-course-progress-button-color: white;
+  --course-outline-title-background-color: rgba(0, 0, 0, 0.03);
 }

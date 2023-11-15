@@ -28,7 +28,7 @@ onMounted(async () => {
         <v-card-title>{{ currentCourse?.course_name }}</v-card-title>
 
         <v-card-text class="d-flex">
-          <img style="height: 21px" src="../assets/icons/calender-dates-icon.svg" />
+          <img height="21" src="../assets/icons/calender-dates-icon.svg" />
           <v-card-subtitle
             >{{ DateTime.fromISO(currentCourse?.start_date).toFormat('dd LLLL') }} -
             {{ DateTime.fromISO(currentCourse?.end_date).toFormat('dd LLLL') }}</v-card-subtitle
@@ -71,7 +71,6 @@ onMounted(async () => {
 <style scoped>
 #current-course-tasks {
   background: var(--current-course-background);
-  border-bottom: 1px solid var(--current-course-bottom-border);
-  font-family: 'Albert Sans', sans-serif;
+  border-bottom: .07rem solid var(--current-course-bottom-border);
 }
 </style>

@@ -7,7 +7,7 @@
       <v-card class="mx-4 rounded-xl py-3" id="learning-module-card">
         <v-breadcrumbs :items="['Foo', 'Bar', 'Fizz']">
           <template v-slot:divider>
-            <img class="mt-2" src="../assets/icons/arrow-right2.svg" />
+            <img class="mt-2" src="../assets/icons/arrow-right.svg" />
           </template>
         </v-breadcrumbs>
         <v-row>
@@ -52,12 +52,4 @@
 </template>
 
 <style scoped>
-#learning-module-card {
-  border-radius: 20px;
-  background: rgba(0, 0, 0, 0.04);
-}
-
-.btnwss {
-  color: white !important;
-}
 </style>

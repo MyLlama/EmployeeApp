@@ -92,7 +92,7 @@ export const useCourseStore = defineStore('course', () => {
       })
 
       currentCourse.value.chapters = chapters
-      console.log(chapters)
+    
       const dueDates = currentCourse.value.chapters.reduce((duedate, chapter) => {
         const lastSection = chapter.section?.[chapter.section.length - 1]
         if (lastSection && Date.parse(lastSection.due) >= Date.now()) {
@@ -102,8 +102,7 @@ export const useCourseStore = defineStore('course', () => {
         }
         return duedate
       }, [])
-      currentCourse.value.module_end_date = dueDates
-      console.log(dueDates)
+      currentCourse.value.module_end_date = dueDates  
     } catch (error) {
       console.error(error)
     }

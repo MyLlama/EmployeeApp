@@ -25,7 +25,17 @@ const messages = {
     Logout: 'Logout',
     ForToday: 'For Today',
     InProgressTasks: 'In-progress tasks',
-    CurrentCourse: 'Current Course'
+    CurrentCourse: 'Current Course',
+    CourseOutline: 'Course Outline',
+    days: 'days',
+    Completed: 'Completed',
+    Ongoing: 'Ongoing',
+    CheckProgress: 'Check Progress',
+    Chapters: 'Chapters',
+    CurrentlyOngoing: 'Currently Ongoing',
+    CourseProgress: 'Course Progress',
+    CPTA :'Check Progress, tasks, activity'
+
   }
 }
 

@@ -15,7 +15,7 @@ onMounted(async () => {
   <v-container>
     <v-row>
       <v-col cols="12">
-        <p class="text-center pa-3 rounded" id="course_outline-title">Course Outline</p>
+        <p class="text-center pa-3 rounded" id="course_outline-title">{{ $t('CourseOutline') }}</p>
         <v-expansion-panels
           v-for="(module, index) in currentCourse?.chapters"
           :key="index"
@@ -41,7 +41,7 @@ onMounted(async () => {
                       {{
                         DateTime.fromISO(currentCourse?.module_end_date[index]).toFormat('dd LLL')
                       }}
-                      <span>
+                      <span v-if="DateTime.now() <= DateTime.fromISO(currentCourse?.module_end_date[index])">
                         {{
                           Math.ceil(
                             DateTime.fromISO(module.start).diff(
@@ -50,16 +50,16 @@ onMounted(async () => {
                             ).days
                           )
                         }}
-                        days
+                       {{ $t('days') }}
                       </span>
-                      <span class="ml-2" v-if="module.complete">
+                      <span class="ml-2" v-if="DateTime.now() > DateTime.fromISO(currentCourse?.module_end_date[index])">
                         <img src="../assets/icons/completed.svg" />
-                        Completed
+                        {{$t('Completed')}}
                       </span>
-                      <span class="px-2" v-else>
+                      <span class="px-2" v-else-if="DateTime.fromISO(module.start) < DateTime.now()">
                         <img src="../assets/icons/ongoing.svg" />
+                        {{$t('Ongoing')}}
                       </span>
-                      <span>Ongoing</span>
                     </span>
                   </v-card-item>
                 </v-col>
@@ -68,15 +68,12 @@ onMounted(async () => {
 
             <v-expansion-panel-text class="red pa-0">
               <v-sheet class="elevation-0 red ml-7">
-                <v-card-subtitle class="py-0 px-0 mb-3 text-body-2"
-                  >Deeper dive into emotional intensification and strategies.</v-card-subtitle
-                >
                 <BaseButton
                   buttonClass="expansion-panel-course-progress-button rounded-pill elevation-0 px-5 text-capitalize text-body-1"
                   height="45"
                 >
-                  Check Progress
-                  <img src="../assets/icons/arrow-right3.svg" class="ml-2" height="21" />
+                 {{$t('CheckProgress')}}
+                  <img src="../assets/icons/arrow-right_upword.svg" class="ml-2" height="21" />
                 </BaseButton>
               </v-sheet>
             </v-expansion-panel-text>

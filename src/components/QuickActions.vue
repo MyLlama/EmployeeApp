@@ -35,7 +35,7 @@ const logout = (quickAction: any) => {
           width="60"
           :variant="quickAction.variant"
         >
-          <img :src="quickAction.icon" class="mx-2" style="height: 21px" />
+          <img :src="quickAction.icon" class="mx-2" height="21" />
         </BaseButton>
 
         <span class="quick-action-button-name" :class="isMobile() ? 'ml-4' : ''">{{
@@ -46,8 +46,4 @@ const logout = (quickAction: any) => {
   </v-card>
 </template>
 <style scoped>
-.quick-actions-card-title,
-.quick-action-button-name {
-  font-family: 'Albert Sans', sans-serif;
-}
 </style>

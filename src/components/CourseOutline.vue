@@ -15,6 +15,7 @@ onMounted(async () => {
   <v-container>
     <v-row>
       <v-col cols="12">
+        <p class="text-center pa-3 rounded" id="course_outline-title">Course Outline</p>
         <v-expansion-panels
           v-for="(module, index) in currentCourse?.chapters"
           :key="index"
@@ -27,14 +28,15 @@ onMounted(async () => {
                   <BaseButton
                     color="rgba(0, 0, 0, 0.03)"
                     icon="mdi-plus"
-                    buttonClass="elevation-0 mt-2"
+                    buttonClass="elevation-0 mt-4"
                     buttonSize="x-small"
                   >
                     {{ index + 1 }}
                   </BaseButton>
+
                   <v-card-item class="d-flex justify-center align-items-center">
-                    <p style="font-size: 16px" class="mb-1">{{ module.display_name }}</p>
-                    <span style="font-size: 11px">
+                    <p class="mb-1 text-body-1">{{ module.display_name }}</p>
+                    <span class="text-caption">
                       {{ DateTime.fromISO(module.start).toFormat('dd LLL') }} -
                       {{
                         DateTime.fromISO(currentCourse?.module_end_date[index]).toFormat('dd LLL')
@@ -66,16 +68,15 @@ onMounted(async () => {
 
             <v-expansion-panel-text class="red pa-0">
               <v-sheet class="elevation-0 red ml-7">
-                <v-card-text style="font-size: 14px" class="py-0 px-0 mb-3"
-                  >Deeper dive into emotional intensification and strategies.</v-card-text
+                <v-card-subtitle class="py-0 px-0 mb-3 text-body-2"
+                  >Deeper dive into emotional intensification and strategies.</v-card-subtitle
                 >
                 <BaseButton
-                  buttonClass="expansion-panel-course-progress-button rounded-pill elevation-0 px-5 text-capitalize"
+                  buttonClass="expansion-panel-course-progress-button rounded-pill elevation-0 px-5 text-capitalize text-body-1"
                   height="45"
-                  style="font-size: 14px"
                 >
                   Check Progress
-                  <img src="../assets/icons/arrow-right3.svg" class="ml-2" style="height: 21px" />
+                  <img src="../assets/icons/arrow-right3.svg" class="ml-2" height="21" />
                 </BaseButton>
               </v-sheet>
             </v-expansion-panel-text>
@@ -87,13 +88,13 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-.card-title {
-  background: rgba(0, 0, 0, 0.03);
-}
 .expansion-panel-course-progress-button {
-  border-radius:var(--expansion-panel-course-progress-button-border-radius);
-  background:var(--expansion-panel-course-progress-button-background);
-  box-shadow:var(--expansion-panel-course-progress-button-);
+  border-radius: var(--expansion-panel-course-progress-button-border-radius);
+  background: var(--expansion-panel-course-progress-button-background);
+  box-shadow: var(--expansion-panel-course-progress-button-);
   color: var(--expansion-panel-course-progress-button-color);
+}
+#course_outline-title {
+  background: var(--course-outline-title-background-color);
 }
 </style>

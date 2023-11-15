@@ -1,24 +1,24 @@
 <script setup lang="ts">
-  import { onMounted } from 'vue'
-  import { getBaseColorAndClosestPalette } from '../utilities/colorUtil'
+import { onMounted } from 'vue'
+import { getBaseColorAndClosestPalette } from '../utilities/colorUtil'
 
-  const props = defineProps({
-    imageUrl: String,
-  })
+const props = defineProps({
+  imageUrl: String
+})
 
-  let textColor
-  let backgroundColor
-  
-  onMounted(async () => {
-    const color = await getBaseColorAndClosestPalette(props.imageUrl)
+let textColor
+let backgroundColor
 
-    textColor = `rgb(${color.closestPalette.colors[0]})`
-    backgroundColor = `rgb(${color.closestPalette.colors[2]})`
+onMounted(async () => {
+  const color = await getBaseColorAndClosestPalette(props.imageUrl)
 
-    const card = document.getElementById('card')
-    card.style.color = textColor
-    card.style.backgroundColor = backgroundColor
-  })
+  textColor = `rgb(${color.closestPalette.colors[0]})`
+  backgroundColor = `rgb(${color.closestPalette.colors[2]})`
+
+  const card = document.getElementById('card')
+  card.style.color = textColor
+  card.style.backgroundColor = backgroundColor
+})
 </script>
 
 <template>
@@ -26,4 +26,3 @@
     <slot></slot>
   </v-card>
 </template>
-

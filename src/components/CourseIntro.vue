@@ -13,20 +13,32 @@ onMounted(async () => {
 </script>
 <template>
   <v-card class="mx-1 elevation-0">
-    <v-card-title class="d-flex d-sm-none">{{ currentCourse?.course_name }}</v-card-title>
+    <v-card-title class="d-flex d-sm-none text-h5 font-weight-regular">{{
+      currentCourse?.course_name
+    }}</v-card-title>
     <v-card-item>
       <v-row>
         <v-col cols="12" md="6">
-          <v-img :src="currentCourse?.course_img" class="rounded-xl"></v-img>
+          <v-img
+            :src="currentCourse?.course_img"
+            class="rounded-xl elevation-3"
+            :class="isMobile() ? '' : 'mt-2'"
+          ></v-img>
         </v-col>
         <v-col cols="12" md="6">
           <v-card-title class="text-center d-none d-sm-flex">{{
             currentCourse?.course_name
           }}</v-card-title>
-          <v-card-text class="pa-0 text-justify">
+
+          <v-card-text class="pa-0 text-justify text-body-1">
             {{ currentCourse?.course_discription }}
           </v-card-text>
-          <v-card-item class="rounded-xl elevation-0 mt-2" id="user-stats-card">
+
+          <v-card-item
+            class="rounded-xl elevation-0"
+            :class="isMobile() ? 'mt-11' : 'mt-2'"
+            id="user-stats-card"
+          >
             <v-row>
               <v-col cols="6" sm="6" xs="6" md="6" class="px-0 py-2">
                 <v-card-item class="justify-center align-center" id="user-stats-card-item">
@@ -65,7 +77,8 @@ onMounted(async () => {
             </v-row>
           </v-card-item>
 
-          <v-card-text class="d-flex justify-center d-sm-none py-0 mt-8 mb-3"
+          <v-card-text
+            class="d-flex justify-center d-sm-none py-0 mt-9 mb-3 text-body-1 text-center"
             >Currently Ongoing</v-card-text
           >
           <v-card
@@ -100,36 +113,17 @@ onMounted(async () => {
   border-color: var(--user-stats-card-border-color1);
 }
 #user-stats-card-item:nth-child(1) {
-  font-family: 'Albert Sans', sans-serif;
-  color: rgb(46, 68, 92);
+  color: var(--user-stats-title-color);
 }
-
 #user-stats-card {
-  border: 1px dashed #729b9e;
+  border: 1px dashed var(--user-stats-text-border-color2);
   background: var(--user-stats-background-color);
 }
-.currently-ongoing-title {
-  text-align: center;
-}
-.user-stats-card-title {
-  font-size: 15px;
-  display: inline;
-}
 .course-progress-button {
-  color: white;
-  border-radius: 16px;
+  color: var(--expansion-panel-course-progress-button-color);
+  border-radius: var(--expansion-panel-course-progress-button-border-radius);
   border: 1px solid var(--llama-primary-default, #ff6839);
-  background: radial-gradient(
-      108.29% 126.73% at 8.66% -41.4%,
-      rgba(0, 0, 0, 0.04) 0%,
-      rgba(0, 0, 0, 0) 100%
-    ),
-    radial-gradient(
-      111.01% 98.09% at 92.56% 114.4%,
-      rgba(255, 255, 255, 0.24) 0%,
-      rgba(255, 255, 255, 0) 100%
-    ),
-    var(--llama-primary-default, #ff6839);
-  box-shadow: 0px 5px 5px -3px rgba(237, 77, 24, 0.23);
+  background: var(--expansion-panel-course-progress-button-background);
+  box-shadow: var(--expansion-panel-course-progress-button-box-shadow);
 }
 </style>

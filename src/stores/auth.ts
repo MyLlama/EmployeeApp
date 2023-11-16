@@ -1,23 +1,23 @@
 import axios from 'axios'
 import { defineStore } from 'pinia'
 import { useStorage } from '@vueuse/core' // For state persistance
-import type { Router } from 'vue-router'
-
+import { useRouter } from 'vue-router'
 const baseUrl = import.meta.env.VITE_BASE_URL
 const url = `${baseUrl}/oauth2/access_token`
 
-export const useAuthStore = defineStore('auth', () => {
+export const useAuthStore = defineStore('auth', () => { 
+  const router = useRouter() 
   const authToken = useStorage('authToken', '')
   const userId = useStorage('userId', '')
   const validityDuration = useStorage('validityDuration', 0)
   let timer: NodeJS.Timeout | number | null = null
 
   // useStorage returns a RemovableRef, which is a special type of reference that is used for reactive state management in Vue.
-  // Router is not available at store level
-  const setTimer = (expiresIn: number, router: Router) => {
+  
+  const setTimer = (expiresIn: number) => {
     clearTimer()
     timer = setTimeout(() => {
-      logout(router)
+      logout()
     }, expiresIn)
   }
 
@@ -28,7 +28,7 @@ export const useAuthStore = defineStore('auth', () => {
     }
   }
 
-  const userLogin = async (username: any, password: string, router: Router): Promise<void> => {
+  const userLogin = async (username: any, password: string): Promise<void> => {
     try {
       const response = await axios.post(url, null, {
         params: {
@@ -42,7 +42,7 @@ export const useAuthStore = defineStore('auth', () => {
       userId.value = username
       const expiresIn = +response.data.expires_in * 1000 // Convert to milliseconds
       validityDuration.value = Date.now() + expiresIn // Calculate the future time in milliseconds when the token will expire.
-      setTimer(expiresIn, router)
+      setTimer(expiresIn)
     } catch (error) {
       console.error(error)
     }
@@ -52,7 +52,7 @@ export const useAuthStore = defineStore('auth', () => {
     return !!authToken.value
   }
 
-  const logout = (router: Router) => {
+  const logout = () => {
     if (Date.now() > validityDuration.value) {
       alert('Session Expired!')
     }
@@ -64,10 +64,12 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   return {
+    router,
     userLogin,
     isAuthenticated,
     authToken,
     userId,
-    logout
+    logout,
+    
   }
 })

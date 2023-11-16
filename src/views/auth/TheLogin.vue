@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { useAuthStore } from '../../stores/auth.ts'
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
 import loginImg from '../../assets/images/login_img.svg'
 
 const authStore = useAuthStore()
-const router = useRouter()
 
 const username = ref('')
 const password = ref('')
@@ -16,10 +14,10 @@ const login = async () => {
   if (username.value === '' && password.value === '') {
     return
   }
-  await authStore.userLogin(username.value, password.value, router)
+  await authStore.userLogin(username.value, password.value)
 
   if (authStore.isAuthenticated()) {
-    router.replace({ name: 'home' })
+    authStore.router.replace({ name: 'home' })
   } else {
     console.error('Authentication Failed!')
     showSnackbar.value = true // Show snackbar when authentication fails

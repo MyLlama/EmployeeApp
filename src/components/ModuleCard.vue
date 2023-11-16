@@ -1,14 +1,20 @@
 <script setup lang="ts">
 import { useCourseStore } from '../stores/courses'
 import { storeToRefs } from 'pinia'
-import { onMounted } from 'vue'
+import { onMounted, computed } from 'vue'
 import { DateTime } from 'luxon'
+import { useRoute } from 'vue-router'
 
 const { currentCourse } = storeToRefs(useCourseStore())
 const { getCurrentCourse } = useCourseStore()
+const route = useRoute()
+
 onMounted(async () => {
   await getCurrentCourse()
 })
+
+const isLearningPage = computed(() => route.path === '/learning')
+
 const sections = () => {
   const sections = currentCourse.value.chapters.reduce((sections: any, chapter: any) => {
     chapter.section?.map((section: any) => {
@@ -25,7 +31,7 @@ const sections = () => {
 <template>
   <v-row>
     <v-col>
-      <p class="pa-5">{{ $t('ForToday') }}</p>
+      <p v-if="isLearningPage" class="pa-5">{{ $t('ForToday') }}</p>
       <v-card
         class="mx-4 rounded-xl py-3 mt-3"
         v-for="section in sections()"

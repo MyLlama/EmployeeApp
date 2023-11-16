@@ -10,7 +10,7 @@ export const useAuthStore = defineStore('auth', () => {
   const authToken = useStorage('authToken', '')
   const userId = useStorage('userId', '')
   const validityDuration = useStorage('validityDuration', 0)
-  let timer: NodeJS.Timeout | number | null = null
+  let timer: number | null = null
 
   // useStorage returns a RemovableRef, which is a special type of reference that is used for reactive state management in Vue.
   // Router is not available at store level

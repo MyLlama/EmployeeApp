@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { getViewsList } from '../utilities/helper'
-const views = getViewsList()
 import { useRouter } from 'vue-router'
+
+const views = getViewsList()
 const router = useRouter()
 </script>
 

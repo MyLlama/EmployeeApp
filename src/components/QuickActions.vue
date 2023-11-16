@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { quickActions } from '../utilities/helper'
 import { useAuthStore } from '../stores/auth.ts'
-import { isMobile } from '../utilities/helper'
 import { useRouter } from 'vue-router'
-
+import { useDisplay } from 'vuetify'
+const { mobile } = useDisplay()
 const router = useRouter()
 const quickActionBtns = quickActions()
 const authStore = useAuthStore()
@@ -30,7 +30,7 @@ const logout = (quickAction: any) => {
           :color="quickAction.color"
           :style="{ background: quickAction.background }"
           buttonClass="rounded-circle mb-2 elevation-0"
-          :class="isMobile() ? 'ml-4' : ''"
+          :class="mobile? 'ml-4' : ''"
           height="63"
           width="60"
           :variant="quickAction.variant"
@@ -38,7 +38,7 @@ const logout = (quickAction: any) => {
           <img :src="quickAction.icon" class="mx-2" style="height: 21px" />
         </BaseButton>
 
-        <span class="quick-action-button-name" :class="isMobile() ? 'ml-4' : ''">{{
+        <span class="quick-action-button-name" :class="mobile? 'ml-4' : ''">{{
           $t(quickAction.name)
         }}</span>
       </v-col>

@@ -1,16 +1,14 @@
 <script setup lang="ts">
 import { quickActions } from '../utilities/helper'
 import { useAuthStore } from '../stores/auth.ts'
-import { useRouter } from 'vue-router'
 import { useDisplay } from 'vuetify'
 const { mobile } = useDisplay()
-const router = useRouter()
 const quickActionBtns = quickActions()
 const authStore = useAuthStore()
 
 const logout = (quickAction: any) => {
   if (quickAction.name === 'Logout') {
-    authStore.logout(router)
+    authStore.logout()
   }
 }
 </script>

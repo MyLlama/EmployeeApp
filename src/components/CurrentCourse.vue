@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { isMobile } from '../utilities/helper'
 import { useCourseStore } from '../stores/courses'
 import { storeToRefs } from 'pinia'
 import { onMounted } from 'vue'
+import { useDisplay } from 'vuetify'
+const { mobile } = useDisplay()
 const { currentCourse } = storeToRefs(useCourseStore())
 const { getCurrentCourse } = useCourseStore()
 
@@ -19,7 +20,7 @@ onMounted(async () => {
       <v-card class="mx-4 rounded-xl elevation-0" id="current-course-tasks">
         <v-card-item>
           <v-img
-            :width="isMobile() ? '' : '35%'"
+            :width="mobile ? '' : '35%'"
             :src="currentCourse?.course_img"
             class="rounded-xl"
           ></v-img>

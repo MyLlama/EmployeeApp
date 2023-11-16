@@ -8,9 +8,7 @@ import corusesIcon from '../assets/icons/courses-icon.svg'
 import settingsIcon from '../assets/icons/setting-icon.svg'
 import logout from '../assets/icons/logout-icon.svg'
 
-function isMobile() {
-  return window.innerWidth <= 600
-}
+
 
 function getViewsList() {
   return [
@@ -76,4 +74,4 @@ function quickActions() {
     }
   ]
 }
-export { isMobile, getViewsList, quickActions }
+export {  getViewsList, quickActions }

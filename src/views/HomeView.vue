@@ -4,18 +4,18 @@ import { useUserStore } from '../stores/user'
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
 import smiley from '../assets/images/Smiley.svg'
-import { isMobile } from '../utilities/helper'
 import { useCmsStore } from '../stores/cms'
 import { useCourseStore } from '../stores/courses'
 import { DateTime } from 'luxon'
 import ImageCard from '@/components/ImageCard.vue'
-
+import { useDisplay } from 'vuetify'
+const { mobile } = useDisplay()
 const { getCurrentCourse } = useCourseStore()
 const { activityData } = useCmsStore()
 const { fetchUserProfile } = useUserStore()
 const { user } = storeToRefs(useUserStore())
 const { currentCourse } = storeToRefs(useCourseStore())
-const width = ref(isMobile() ? window.innerWidth - 96 : 480)
+const width = ref(mobile ? window.innerWidth - 96 : 480)
 
 function getGreetingMessage() {
   const currentTime = new Date()

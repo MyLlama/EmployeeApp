@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { isMobile } from '../utilities/helper'
 import { useCourseStore } from '../stores/courses'
 import { storeToRefs } from 'pinia'
 import { onMounted } from 'vue'
 const { currentCourse } = storeToRefs(useCourseStore())
 const { getCurrentCourse } = useCourseStore()
 import { DateTime } from 'luxon'
+import { useDisplay } from 'vuetify'
+const { mobile } = useDisplay()
 
 onMounted(async () => {
   await getCurrentCourse()
@@ -22,7 +23,7 @@ onMounted(async () => {
           <v-img
             :src="currentCourse?.course_img"
             class="rounded-xl elevation-3"
-            :class="isMobile() ? '' : 'mt-2'"
+            :class="mobile ? '' : 'mt-2'"
           ></v-img>
         </v-col>
         <v-col cols="12" md="6">
@@ -36,7 +37,7 @@ onMounted(async () => {
 
           <v-card-item
             class="rounded-xl elevation-0"
-            :class="isMobile() ? 'mt-11' : 'mt-2'"
+            :class="mobile ? 'mt-11' : 'mt-2'"
             id="user-stats-card"
           >
             <v-row>
@@ -77,7 +78,7 @@ onMounted(async () => {
             >{{$t('CurrentlyOngoing')}}</v-card-text
           >
           <v-card
-            :width="isMobile() ? '100%' : '50%'"
+            :width="mobile ? '100%' : '50%'"
             class="course-progress-button d-flex justify-flex-start px-0 pa-1 rounded-xl mt-2 elevation-0"
           >
             <v-card-item>
@@ -90,7 +91,7 @@ onMounted(async () => {
             <v-card-item class="mx-0">
               <img
                 src="../assets/icons/arrow-right_upword.svg"
-                :class="isMobile() ? 'ml-16 mt-2' : ''"
+                :class="mobile ? 'ml-16 mt-2' : ''"
                 height="25"
               />
             </v-card-item>

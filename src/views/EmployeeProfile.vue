@@ -3,7 +3,8 @@ import UserProfile from '../components/UserProfile.vue'
 import UserStats from '../components/UserStats.vue'
 import QuickActions from '../components/QuickActions.vue'
 import MatrixMap from '../components/MatrixMap.vue'
-import { isMobile } from '../utilities/helper'
+import { useDisplay } from 'vuetify'
+const { mobile } = useDisplay()
 </script>
 
 <template>
@@ -11,14 +12,14 @@ import { isMobile } from '../utilities/helper'
   <v-row>
     <v-col cols="12" md="6">
       <UserStats />
-      <QuickActions class="ma-8" v-if="!isMobile()" />
+      <QuickActions class="ma-8" v-if="!mobile" />
     </v-col>
     <v-col cols="12" md="6">
       <MatrixMap />
     </v-col>
   </v-row>
 
-  <v-row v-if="isMobile()">
+  <v-row v-if="mobile">
     <v-col cols="12" md="6">
       <QuickActions />
     </v-col>

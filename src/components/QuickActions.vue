@@ -2,15 +2,12 @@
 import { quickActions } from '../utilities/helper'
 import { useAuthStore } from '../stores/auth.ts'
 import { isMobile } from '../utilities/helper'
-import { useRouter } from 'vue-router'
-
-const router = useRouter()
 const quickActionBtns = quickActions()
 const authStore = useAuthStore()
 
 const logout = (quickAction: any) => {
   if (quickAction.name === 'Logout') {
-    authStore.logout(router)
+    authStore.logout()
   }
 }
 </script>

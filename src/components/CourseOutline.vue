@@ -41,7 +41,11 @@ onMounted(async () => {
                       {{
                         DateTime.fromISO(currentCourse?.module_end_date[index]).toFormat('dd LLL')
                       }}
-                      <span v-if="DateTime.now() <= DateTime.fromISO(currentCourse?.module_end_date[index])">
+                      <span
+                        v-if="
+                          DateTime.now() <= DateTime.fromISO(currentCourse?.module_end_date[index])
+                        "
+                      >
                         {{
                           Math.ceil(
                             DateTime.fromISO(module.start).diff(
@@ -50,15 +54,23 @@ onMounted(async () => {
                             ).days
                           )
                         }}
-                       {{ $t('days') }}
+                        {{ $t('days') }}
                       </span>
-                      <span class="ml-2" v-if="DateTime.now() > DateTime.fromISO(currentCourse?.module_end_date[index])">
+                      <span
+                        class="ml-2"
+                        v-if="
+                          DateTime.now() > DateTime.fromISO(currentCourse?.module_end_date[index])
+                        "
+                      >
                         <img src="../assets/icons/completed.svg" />
-                        {{$t('Completed')}}
+                        {{ $t('Completed') }}
                       </span>
-                      <span class="px-2" v-else-if="DateTime.fromISO(module.start) < DateTime.now()">
+                      <span
+                        class="px-2"
+                        v-else-if="DateTime.fromISO(module.start) < DateTime.now()"
+                      >
                         <img src="../assets/icons/ongoing.svg" />
-                        {{$t('Ongoing')}}
+                        {{ $t('Ongoing') }}
                       </span>
                     </span>
                   </v-card-item>
@@ -72,7 +84,7 @@ onMounted(async () => {
                   buttonClass="expansion-panel-course-progress-button rounded-pill elevation-0 px-5 text-capitalize text-body-1"
                   height="45"
                 >
-                 {{$t('CheckProgress')}}
+                  {{ $t('CheckProgress') }}
                   <img src="../assets/icons/arrow-right_upword.svg" class="ml-2" height="21" />
                 </BaseButton>
               </v-sheet>

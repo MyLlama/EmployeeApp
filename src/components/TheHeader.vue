@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import logo from '../assets/images/logo.svg'
 import { isMobile } from '../utilities/helper'
+import { VAppBar, VImg, VAppBarTitle } from 'vuetify/components'
 </script>
 
 <template>

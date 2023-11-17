@@ -9,6 +9,8 @@ import { useCmsStore } from '../stores/cms'
 import { useCourseStore } from '../stores/courses'
 import { DateTime } from 'luxon'
 import ImageCard from '@/components/ImageCard.vue'
+import { VListItem, VImg, VRow, VCol, VSheet, VCardTitle, VCardSubtitle, VCardItem, VCarousel, VCarouselItem, VCardActions, VSpacer, VBtn, VDivider, VList } from 'vuetify/components'
+import { VBottomSheet } from 'vuetify/labs/VBottomSheet'
 
 const { getCurrentCourse } = useCourseStore()
 const { activityData } = useCmsStore()

@@ -2,6 +2,8 @@
 import { getViewsList } from '../utilities/helper'
 const views = getViewsList()
 import { useRouter } from 'vue-router'
+import { VBottomNavigation, VBtn } from 'vuetify/components'
+
 const router = useRouter()
 </script>
 

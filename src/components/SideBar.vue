@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { getViewsList } from '../utilities/helper'
 import { useRouter } from 'vue-router'
+import { VNavigationDrawer, VList, VListItem, VDivider } from 'vuetify/components'
 
 const views = getViewsList()
 const router = useRouter()

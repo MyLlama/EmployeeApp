@@ -11,6 +11,7 @@
 <script setup lang="ts">
 import { Chart, registerables } from 'chart.js'
 import { onMounted, ref } from 'vue'
+import { VCard, VCardTitle, VDivider } from 'vuetify/components'
 
 Chart.register(...registerables)
 

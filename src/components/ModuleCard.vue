@@ -3,6 +3,7 @@ import { useCourseStore } from '../stores/courses'
 import { storeToRefs } from 'pinia'
 import { onMounted } from 'vue'
 import { DateTime } from 'luxon'
+import { VRow, VCol, VCard, VCardTitle, VCardItem, VSpacer, VChip } from 'vuetify/components'
 
 const { currentCourse } = storeToRefs(useCourseStore())
 const { getCurrentCourse } = useCourseStore()

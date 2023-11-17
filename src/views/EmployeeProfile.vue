@@ -4,6 +4,8 @@ import UserStats from '../components/UserStats.vue'
 import QuickActions from '../components/QuickActions.vue'
 import MatrixMap from '../components/MatrixMap.vue'
 import { isMobile } from '../utilities/helper'
+import { VRow, VCol } from 'vuetify/components'
+
 </script>
 
 <template>

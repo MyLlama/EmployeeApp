@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import { onMounted } from 'vue'
   import { getBaseColorAndClosestPalette } from '../utilities/colorUtil'
+  import { VCard } from 'vuetify/components'
 
   const props = defineProps({
     imageUrl: String,

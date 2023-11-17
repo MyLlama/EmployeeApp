@@ -3,6 +3,7 @@ import { quickActions } from '../utilities/helper'
 import { useAuthStore } from '../stores/auth.ts'
 import { isMobile } from '../utilities/helper'
 import { useRouter } from 'vue-router'
+import { VCard, VCardTitle, VRow, VCol } from 'vuetify/components'
 
 const router = useRouter()
 const quickActionBtns = quickActions()

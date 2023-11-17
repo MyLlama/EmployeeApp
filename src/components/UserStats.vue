@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { VCard, VRow, VCol, VCardItem, VCardTitle } from 'vuetify/components'
+</script>
 
 <template>
   <v-card class="mx-4 my-4 px-2 mb-1 rounded-xl" elevation="0" id="user-stats-card">

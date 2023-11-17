@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { VRow, VCol, VCard, VBreadcrumbs, VCardTitle, VCardItem, VSpacer, VDivider, VCardText, VProgressLinear, VBtn }from 'vuetify/components'
+</script>
 <template>
   <v-row>
     <v-col>

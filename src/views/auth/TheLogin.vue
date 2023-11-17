@@ -3,6 +3,7 @@ import { useAuthStore } from '../../stores/auth.ts'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import loginImg from '../../assets/images/login_img.svg'
+import { VContainer, VRow, VCol, VImg, VSheet, VForm, VTextField, VCheckbox, VSnackbar, VBtn } from 'vuetify/components'
 
 const authStore = useAuthStore()
 const router = useRouter()

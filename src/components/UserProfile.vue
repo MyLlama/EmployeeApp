@@ -2,6 +2,7 @@
 import { storeToRefs } from 'pinia'
 import { useUserStore } from '../stores/user'
 import { onMounted } from 'vue'
+import { VCard, VAvatar, VImg, VCardItem, VCardTitle, VCardSubtitle } from 'vuetify/components'
 
 const { user } = storeToRefs(useUserStore())
 const { fetchUserProfile } = useUserStore()

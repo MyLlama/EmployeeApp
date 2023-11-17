@@ -5,6 +5,8 @@
 </template>
 
 <script setup lang="ts">
+import { VBtn } from 'vuetify/components'
+
 // Define the variant type with the specific string literals and undefined
 type VariantType = 'flat' | 'text' | 'elevated' | 'tonal' | 'outlined' | 'plain' | undefined
 

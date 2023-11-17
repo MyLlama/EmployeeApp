@@ -3,6 +3,8 @@ import { isMobile } from '../utilities/helper'
 import { useCourseStore } from '../stores/courses'
 import { storeToRefs } from 'pinia'
 import { onMounted } from 'vue'
+import { VRow, VCol, VCard, VCardItem, VImg, VCardTitle, VCardText, VCardSubtitle, VProgressLinear, VList, VListItem } from 'vuetify/components'
+
 const { currentCourse } = storeToRefs(useCourseStore())
 const { getCurrentCourse } = useCourseStore()
 

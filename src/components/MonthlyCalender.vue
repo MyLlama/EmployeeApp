@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { VCard } from 'vuetify/components'
 
 const currentDate = ref(new Date())
 const todayDate = ref(currentDate.value.getDate().toString().padStart(2, '0'))

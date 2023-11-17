@@ -20,6 +20,8 @@ const date = ref([new Date()])
 const options: Intl.DateTimeFormatOptions = { day: '2-digit', month: 'short', year: 'numeric' }
 const currentDate = ref(new Date().toLocaleDateString('en-GB', options))
 
+const timestampDate = Date.parse(currentDate.value)
+
 onMounted(async () => {
   await courseStore.getCurrentCourse()
 })
@@ -28,7 +30,7 @@ onMounted(async () => {
 <template>
   <v-sheet class="py-2 px-5" color="var(--llama-secondary-label)">
     <v-breadcrumbs class="d-flex align-center">
-      <v-breadcrumbs-item>Courses</v-breadcrumbs-item>
+      <v-breadcrumbs-item>{{ $t('Courses') }}</v-breadcrumbs-item>
       <v-breadcrumbs-divider>
         <img src="../assets/icons/arrow-right2.svg" />
       </v-breadcrumbs-divider>
@@ -43,8 +45,10 @@ onMounted(async () => {
       <v-col cols="12" md="6">
         <v-card class="pa-5 graph-card" elevation="0">
           <v-card-item>
-            <v-card-title class="text-subtitle-1 font-weight-medium">Daily Activities</v-card-title>
-            <v-card-subtitle>Engagement on course</v-card-subtitle>
+            <v-card-title class="text-subtitle-1 font-weight-medium">
+              {{ $t('DailyActivities') }}
+            </v-card-title>
+            <v-card-subtitle>{{ $t('EngagementOnCourse') }}</v-card-subtitle>
           </v-card-item>
           <v-card-text> Here comes the graph </v-card-text>
         </v-card>
@@ -78,7 +82,7 @@ onMounted(async () => {
         <v-row>
           <v-col class="d-flex justify-center">
             <v-btn class="text-none py-2 px-7 text-subtitle-1 font-weight-regular btn-show-old">
-              Show Older
+              {{ $t('ShowOlder') }}
             </v-btn>
           </v-col>
         </v-row>
@@ -92,7 +96,7 @@ onMounted(async () => {
         <v-divider class="divider"></v-divider>
       </v-col>
       <v-col>
-        <ModuleCard />
+        <ModuleCard :custom-date="timestampDate" />
       </v-col>
     </v-row>
   </v-container>

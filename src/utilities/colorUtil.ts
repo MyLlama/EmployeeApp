@@ -41,15 +41,12 @@ const findClosestPalette = (baseColor: number[]): { name: string; colors: number
   let closestDistance = Infinity
 
   colorPalettes.forEach((palette) => {
-    palette.colors.forEach((color) => {
-      const distance = colorDistance(baseColor, color)
-      if (distance < closestDistance) {
-        closestDistance = distance
-        closestPalette = palette
-      }
-    })
+    const distance = colorDistance(baseColor, palette.colors[2])
+    if (distance < closestDistance) {
+      closestDistance = distance
+      closestPalette = palette
+    }
   })
-
   return closestPalette
 }
 

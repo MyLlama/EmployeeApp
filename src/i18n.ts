@@ -25,7 +25,11 @@ const messages = {
     Logout: 'Logout',
     ForToday: 'For Today',
     InProgressTasks: 'In-progress tasks',
-    CurrentCourse: 'Current Course'
+    CurrentCourse: 'Current Course',
+    DailyActivities: 'Daily Activities',
+    EngagementOnCourse: 'Engagement on course',
+    ShowOlder: 'Show Older',
+    EventDetail: 'Event Detail'
   }
 }
 

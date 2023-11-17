@@ -20,8 +20,8 @@ import BaseButton from './components/BaseButton.vue'
 const vuetify = createVuetify({
   components: {
     ...components,
-    VBottomSheet,
-    VDatePicker
+    VDatePicker,
+    VBottomSheet
   },
   directives
 })

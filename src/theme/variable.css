@@ -1,13 +1,4 @@
-:root {
-  --btn-color: #f89854;
-  --link-color: #d65a03;
-  --text-color: #000;
 
-  /* current course  */
-  --current-course-background: #f4f8fc;
-  --curent-course-progress-bar-color: #3473ab;
-  --current-course-bottom-border: #a9c9d6;
-}
 .pointer {
   cursor: pointer;
 }
@@ -27,14 +18,11 @@
   --button-danger: red;
   /* Indicates a successful action, like confirming a submission or completion. */
   --button-success: green;
-  /* For informational purposes, like getting more details. */
-  --button-info: yellow;
-  /* To alert users, typically used before performing potentially harmful actions */
-  --button-warning: blue;
-  /* For buttons that are not currently interactive. */
-  --button-disabled: black;
-  /* For buttons that change state, like on/off switches. */
-  --button-toggle: pink;
+
+ /* current course  */
+  --current-course-background: #f4f8fc;
+  --curent-course-progress-bar-color: #3473ab;
+  --current-course-bottom-border: #a9c9d6;
 
   /* User Stats */
   --user-stats-background-color: linear-gradient(
@@ -48,13 +36,6 @@
 
   /* Metric maps */
   --metric-map-card-border-color: #e5e4e2;
-
-  /* Quick Actions */
-  --favorite-button: radial-gradient(
-    104.17% 104.17% at 77.62% 22.26%,
-    #ff9aac 0%,
-    rgba(255, 223, 213, 0.91) 100%
-  );
 
   /*learning module card */
   --learning-module-card: radial-gradient(

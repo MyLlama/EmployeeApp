@@ -65,6 +65,5 @@ const sections = () => {
   border: var(--learning-module-border);
   background: var(--learning-module-card);
   box-shadow: var(--learning-module-card-box-shadow);
-  font-family: 'Albert Sans', sans-serif;
 }
 </style>

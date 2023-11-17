@@ -46,8 +46,4 @@ const logout = (quickAction: any) => {
   </v-card>
 </template>
 <style scoped>
-.quick-actions-card-title,
-.quick-action-button-name {
-  font-family: 'Albert Sans', sans-serif;
-}
 </style>

@@ -93,8 +93,8 @@ const sections = () => {
       <v-bottom-sheet v-model="isEventDetailVisible" scrollable>
         <v-card class="rounded-t-xl">
           <v-card-title class="d-flex justify-space-between align-center">
-            <span class="text-center flex-grow-1 text-body-1">{{ $t('EventDetail') }}</span>
-            <v-btn @click="closeBottomSheet" elevation="0">
+            <span class="text-center flex-grow-1 event-title">{{ $t('EventDetail') }}</span>
+            <v-btn @click="closeBottomSheet" elevation="0" class="pointer">
               <img src="../assets/icons/cross-icon.svg" />
             </v-btn>
           </v-card-title>
@@ -107,10 +107,18 @@ const sections = () => {
 </template>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2&display=swap');
+
 #learning-module-card {
   border: var(--learning-module-border);
   background: var(--learning-module-card);
   box-shadow: var(--learning-module-card-box-shadow);
   font-family: 'Albert Sans', sans-serif;
+}
+
+.event-title {
+  font-family: 'Baloo Da 2', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
 }
 </style>

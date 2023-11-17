@@ -145,12 +145,12 @@ p {
   letter-spacing: 0.045rem;
 }
 .heading-text {
-  color: var(--text-color);
+  color: var(--button-tertiary);
   font-family: 'Dosis', sans-serif;
 }
 
 .forgot-password-btn {
-  color: var(--link-color);
+  color: var(--button-primary);
 }
 
 .login-img {

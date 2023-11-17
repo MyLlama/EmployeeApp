@@ -19,7 +19,6 @@
   border-color: var(--user-stats-card-border-color1);
 }
 #user-stats-card-item:nth-child(1) {
-  font-family: 'Albert Sans', sans-serif;
   color: rgb(46, 68, 92);
 }
 

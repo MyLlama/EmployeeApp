@@ -73,6 +73,5 @@ onMounted(async () => {
 #current-course-tasks {
   background: var(--current-course-background);
   border-bottom: 1px solid var(--current-course-bottom-border);
-  font-family: 'Albert Sans', sans-serif;
 }
 </style>

@@ -38,7 +38,7 @@ onMounted(async () => {
         <v-card-text>
           <v-progress-linear
             model-value="20"
-            color="var(--curent-course-progress-bar-color)"
+            color="#3473ab"
           ></v-progress-linear>
         </v-card-text>
 
@@ -70,7 +70,7 @@ onMounted(async () => {
 
 <style scoped>
 #current-course-tasks {
-  background: var(--current-course-background);
-  border-bottom: .07rem solid var(--current-course-bottom-border);
+  background:  #f4f8fc;
+  border-bottom: .07rem solid  #a9c9d6;
 }
 </style>

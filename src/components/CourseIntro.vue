@@ -105,20 +105,25 @@ onMounted(async () => {
 #user-stats-card-item {
   border-width: 0rem .07rem;
   border-style: dashed;
-  border-color: var(--user-stats-text-border-color2);
+  border-color: var(--user-stats-text-border-color);
 }
 #user-stats-card-item:nth-child(1) {
   color: var(--user-stats-title-color);
 }
 #user-stats-card {
-  border: .07rem dashed var(--user-stats-text-border-color2);
+  border: .07rem dashed var(--user-stats-text-border-color);
   background: var(--user-stats-background-color);
 }
 .course-progress-button {
-  color: var(--expansion-panel-course-progress-button-color);
-  border-radius: var(--expansion-panel-course-progress-button-border-radius);
-  border: .07rem solid var(--llama-primary-default, #ff6839);
-  background: var(--expansion-panel-course-progress-button-background);
-  box-shadow: var(--expansion-panel-course-progress-button-box-shadow);
+  border: .07rem solid #ff6839;
+  border-radius:1.32rem;
+  background: linear-gradient(
+      0deg,
+      var(--llama-primary-default, #ff6839) 0%,
+      var(--llama-primary-default, #ff6839) 100%
+    ),
+    #fff;
+  box-shadow: 0px 3px 5px -3px rgba(237, 77, 24, 0.23);
+  color:white;
 }
 </style>

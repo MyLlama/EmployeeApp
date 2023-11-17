@@ -86,12 +86,17 @@ onMounted(async () => {
 
 <style scoped>
 .expansion-panel-course-progress-button {
-  border-radius: var(--expansion-panel-course-progress-button-border-radius);
-  background: var(--expansion-panel-course-progress-button-background);
-  box-shadow: var(--expansion-panel-course-progress-button-);
-  color: var(--expansion-panel-course-progress-button-color);
+  border-radius:1.32rem;
+  background: linear-gradient(
+      0deg,
+      var(--llama-primary-default, #ff6839) 0%,
+      var(--llama-primary-default, #ff6839) 100%
+    ),
+    #fff;
+  box-shadow: 0px 3px 5px -3px rgba(237, 77, 24, 0.23);
+  color:white;
 }
 #course_outline-title {
-  background: var(--course-outline-title-background-color);
+  background:  rgba(0, 0, 0, 0.03);
 }
 </style>

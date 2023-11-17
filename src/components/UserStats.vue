@@ -16,14 +16,13 @@
 #user-stats-card-item {
   border-width: 0rem .07rem;
   border-style: dashed;
-  border-color: var(--user-stats-card-border-color1);
+  border-color: var(--user-stats-text-border-color);
 }
 #user-stats-card-item:nth-child(1) {
   color: var(--user-stats-title-color);
 }
-
 #user-stats-card {
-  border: 0.13rem solid var(--user-stats-card-border-color);
+  border: .07rem dashed var(--user-stats-text-border-color);
   background: var(--user-stats-background-color);
 }
 </style>

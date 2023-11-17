@@ -68,6 +68,6 @@ onMounted(() => {
 
 <style>
 .matric-map-card {
-  color: var(--metric-map-card-border-color);
+  color:  #e5e4e2
 }
 </style>

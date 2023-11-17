@@ -85,7 +85,7 @@ const passwordValidation = [(password: any) => !!password || 'Password is requir
                     />
                     <img
                       v-else
-                      src="../../assets/icons/profile-icon.svg"
+                      src="../../assets/icons/eye-slash-icon.svg"
                       @click="showPassword = !showPassword"
                     />
                   </template>

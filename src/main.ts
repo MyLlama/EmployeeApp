@@ -11,6 +11,7 @@ import App from './App.vue'
 import router from './router/index.ts'
 import i18n from './i18n.ts'
 import { VBottomSheet } from 'vuetify/labs/VBottomSheet'
+import { VDatePicker } from 'vuetify/labs/VDatePicker'
 
 // Since we will using global components everywhere, it is advisable to import them in main file
 // Global components
@@ -19,6 +20,7 @@ import BaseButton from './components/BaseButton.vue'
 const vuetify = createVuetify({
   components: {
     ...components,
+    VDatePicker,
     VBottomSheet
   },
   directives

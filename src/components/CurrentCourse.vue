@@ -30,10 +30,10 @@ onMounted(async () => {
 
         <v-card-text class="d-flex">
           <img style="height: 21px" src="../assets/icons/calender-dates-icon.svg" />
-          <v-card-subtitle
-            >{{ DateTime.fromISO(currentCourse?.start_date).toFormat('dd LLLL') }} -
-            {{ DateTime.fromISO(currentCourse?.end_date).toFormat('dd LLLL') }}</v-card-subtitle
-          >
+          <v-card-subtitle>
+            {{ DateTime.fromISO(currentCourse?.start_date).toFormat('dd LLLL') }} -
+            {{ DateTime.fromISO(currentCourse?.end_date).toFormat('dd LLLL') }}
+          </v-card-subtitle>
         </v-card-text>
 
         <v-card-text>

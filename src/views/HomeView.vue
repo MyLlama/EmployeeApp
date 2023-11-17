@@ -33,7 +33,7 @@ function getGreetingMessage() {
 const sections = () => {
   return currentCourse.value.chapters.reduce((sections: any, chapter: any) => {
     chapter.section?.map((section: any) => {
-      if(!section.due) sections.push(section)
+      if (!section.due) sections.push(section)
     })
     return sections
   }, [])
@@ -42,7 +42,7 @@ const sections = () => {
 const todos = () => {
   return currentCourse.value.chapters.reduce((sections: any, chapter: any) => {
     chapter.section?.map((section: any) => {
-      if(section.due) sections.push(section)
+      if (section.due) sections.push(section)
     })
     return sections
   }, [])
@@ -73,15 +73,13 @@ onMounted(async () => {
   <v-row>
     <v-col v-if="activity?.type">
       <v-sheet class="px-6 py-2">
-        <ImageCard class="rounded-xl pa-2" :image-url="activity.type ==='images' ? activity?.media[0] : activity?.media.thumbnail">
+        <ImageCard
+          class="rounded-xl pa-2"
+          :image-url="activity.type === 'images' ? activity?.media[0] : activity?.media.thumbnail"
+        >
+          <v-card-title> Mindfulness Moment </v-card-title>
 
-          <v-card-title>
-            Mindfulness Moment
-          </v-card-title>
-
-          <v-card-subtitle>
-            Let the soothing waves wash away stress
-          </v-card-subtitle>
+          <v-card-subtitle> Let the soothing waves wash away stress </v-card-subtitle>
 
           <v-card-item class="my-3">
             <video
@@ -91,7 +89,7 @@ onMounted(async () => {
               :width="width"
               :height="width - 150"
               controls
-              autoplay  
+              autoplay
             >
               <source :src="activity?.media.data" type="video/mp4" />
             </video>
@@ -116,14 +114,19 @@ onMounted(async () => {
               <v-carousel-item v-for="item in activity?.media" :key="item" :src="item" cover />
             </v-carousel>
           </v-card-item>
-        </ImageCard>       
+        </ImageCard>
       </v-sheet>
     </v-col>
 
     <v-col>
       <p class="px-6 py-2 text-body-1">Things to do</p>
 
-      <v-card variant="tonal" class="mx-6 my-2 rounded-xl activity-card" v-for="todo in todos()" :key="todo">
+      <v-card
+        variant="tonal"
+        class="mx-6 my-2 rounded-xl activity-card"
+        v-for="todo in todos()"
+        :key="todo"
+      >
         <v-card-item>
           <v-card-title>{{ todo.display_name }}</v-card-title>
         </v-card-item>
@@ -131,7 +134,9 @@ onMounted(async () => {
         <v-card-item>{{ todo.description }}</v-card-item>
 
         <v-card-actions>
-          <p class="text-caption pa-2">Before: {{ DateTime.fromISO(todo.due).toFormat('dd LLL y') }}</p>
+          <p class="text-caption pa-2">
+            Before: {{ DateTime.fromISO(todo.due).toFormat('dd LLL y') }}
+          </p>
 
           <v-spacer></v-spacer>
           <div class="px-6 d-flex">
@@ -147,10 +152,14 @@ onMounted(async () => {
         </v-card-item>
 
         <v-list class="mx-4">
-          <v-list-item class="bg-grey-lighten-4 rounded-lg my-2 elevation-1 mx-1 my-3" v-for="index in 4" :key="index">
+          <v-list-item
+            class="bg-grey-lighten-4 rounded-lg my-2 elevation-1 mx-1 my-3"
+            v-for="index in 4"
+            :key="index"
+          >
             {{ sections()[index]?.display_name }}
-            <template v-slot:append>    
-              <img class="pointer" src="../assets/icons/arrow-right2.svg"/>
+            <template v-slot:append>
+              <img class="pointer" src="../assets/icons/arrow-right2.svg" />
             </template>
           </v-list-item>
         </v-list>
@@ -162,16 +171,27 @@ onMounted(async () => {
 
           <v-spacer></v-spacer>
 
-          <v-bottom-sheet v-model="showCompleteChecklist" >
+          <v-bottom-sheet v-model="showCompleteChecklist">
             <template v-slot:activator="{ props }">
-              <v-btn v-bind="props" size="small" rounded="xl" color="white" class="see-all-btn px-3 ma-3" elevation="1">
+              <v-btn
+                v-bind="props"
+                size="small"
+                rounded="xl"
+                color="white"
+                class="see-all-btn px-3 ma-3"
+                elevation="1"
+              >
                 See all
               </v-btn>
             </template>
 
             <v-card class="rounded-t-xl">
-              <template v-slot:append>    
-                <img class="pointer" src="../assets/icons/add.svg" @click="showCompleteChecklist = false"/>
+              <template v-slot:append>
+                <img
+                  class="pointer"
+                  src="../assets/icons/add.svg"
+                  @click="showCompleteChecklist = false"
+                />
               </template>
 
               <template v-slot:title>
@@ -182,9 +202,13 @@ onMounted(async () => {
 
               <v-card-item class="bg-grey-lighten-5">
                 <v-list class="bg-grey-lighten-5" height="400">
-                  <v-list-subheader class="text-black">{{ sections().length }} Pending Items</v-list-subheader>
+                  <v-list-subheader class="text-black"
+                    >{{ sections().length }} Pending Items</v-list-subheader
+                  >
 
-                  <v-list-item class="pa-3 mx-1 my-3 rounded-lg" elevation="2"
+                  <v-list-item
+                    class="pa-3 mx-1 my-3 rounded-lg"
+                    elevation="2"
                     v-for="section in sections()"
                     :key="section"
                   >
@@ -192,8 +216,12 @@ onMounted(async () => {
 
                     <v-list-item-title>{{ section.display_name }}</v-list-item-title>
 
-                    <template v-slot:append>    
-                      <img class="pointer pr-3" src="../assets/icons/arrow-right2.svg" @click="showCompleteChecklist = false"/>
+                    <template v-slot:append>
+                      <img
+                        class="pointer pr-3"
+                        src="../assets/icons/arrow-right2.svg"
+                        @click="showCompleteChecklist = false"
+                      />
                     </template>
                   </v-list-item>
                 </v-list>
@@ -207,15 +235,13 @@ onMounted(async () => {
   <v-row>
     <v-col v-if="activity?.type">
       <v-sheet class="px-6 py-2">
-        <ImageCard class="rounded-xl pa-2" :image-url="activity.type ==='images' ? activity?.media[0] : activity?.media.thumbnail">
+        <ImageCard
+          class="rounded-xl pa-2"
+          :image-url="activity.type === 'images' ? activity?.media[0] : activity?.media.thumbnail"
+        >
+          <v-card-title> Mindfulness Moment </v-card-title>
 
-          <v-card-title>
-            Mindfulness Moment
-          </v-card-title>
-
-          <v-card-subtitle>
-            Let the soothing waves wash away stress
-          </v-card-subtitle>
+          <v-card-subtitle> Let the soothing waves wash away stress </v-card-subtitle>
 
           <v-card-item class="my-3">
             <video
@@ -250,7 +276,7 @@ onMounted(async () => {
               <v-carousel-item v-for="item in activity?.media" :key="item" :src="item" cover />
             </v-carousel>
           </v-card-item>
-        </ImageCard>       
+        </ImageCard>
       </v-sheet>
     </v-col>
   </v-row>

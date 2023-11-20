@@ -92,21 +92,28 @@ export const useCourseStore = defineStore('course', () => {
       })
 
       currentCourse.value.chapters = chapters
-    
+
+      // Extracting the due dates from the chapters of the current course
       const dueDates = currentCourse.value.chapters.reduce((duedate, chapter) => {
-        const lastSection = chapter.section?.[chapter.section.length - 1]
-        if (lastSection && Date.parse(lastSection.due) >= Date.now()) {
-          duedate.push(lastSection.due)
-        } else if (chapter.section?.[0]) {
-          duedate.push(chapter.section[0].due)
+        // Check if the chapter has sections
+        if (chapter.section && chapter.section.length >= 0) {
+          // Find the biggest date in the chapter's sections
+          const biggestDueDate = chapter.section.reduce((latest, section) => {
+            // Parse the due date of each section and compare to find the latest one
+            const sectionDueDate = Date.parse(section.due)
+            return sectionDueDate > latest ? sectionDueDate : latest
+          }, 0)
+          // Convert the biggestDueDate to ISO string and add to the due date array
+          duedate.push(new Date(biggestDueDate).toISOString())
         }
         return duedate
       }, [])
-      currentCourse.value.module_end_date = dueDates  
+      currentCourse.value.module_end_date = dueDates
     } catch (error) {
       console.error(error)
     }
   }
+
 
   const getCourseImg = async (courseId: string): Promise<any> => {
     try {

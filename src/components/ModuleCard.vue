@@ -62,9 +62,18 @@ const sections = () => {
 
 <style scoped>
 #learning-module-card {
-  border: var(--learning-module-border);
-  background: var(--learning-module-card);
-  box-shadow: var(--learning-module-card-box-shadow);
-  font-family: 'Albert Sans', sans-serif;
+  border: 0.13rem solid #b1b4ff;
+  background: radial-gradient(
+      108.29% 126.73% at 8.66% -41.4%,
+      rgba(0, 0, 0, 0.07) 0%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    radial-gradient(
+      111.01% 98.09% at 92.56% 114.4%,
+      rgba(255, 255, 255, 0.24) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    #b1b4ff;
+  box-shadow: 0px 12px 10px -3px rgba(177, 180, 255, 0.3);
 }
 </style>

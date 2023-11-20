@@ -6,7 +6,7 @@ import { isMobile } from '../utilities/helper'
 <template>
   <v-app-bar :elevation="1">
     <template v-slot:prepend>
-      <v-img height="30px" width="40px" :src="logo"></v-img>
+      <v-img height="1.87rem" width="2.5rem" :src="logo"></v-img>
     </template>
     <v-app-bar-title :class="isMobile() ? 'd-flex justify-space-evenly mr-9 ml-0' : ''">
       {{ $t('Llama') }}

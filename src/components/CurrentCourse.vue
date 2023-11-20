@@ -16,7 +16,6 @@ onMounted(async () => {
   <v-row>
     <v-col>
       <p class="pa-5">{{ $t('CurrentCourse') }}</p>
-
       <v-card class="mx-4 rounded-xl elevation-0" id="current-course-tasks">
         <v-card-item>
           <v-img
@@ -29,7 +28,7 @@ onMounted(async () => {
         <v-card-title>{{ currentCourse?.course_name }}</v-card-title>
 
         <v-card-text class="d-flex">
-          <img style="height: 21px" src="../assets/icons/calender-dates-icon.svg" />
+          <img height="21" src="../assets/icons/calender-dates-icon.svg" />
           <v-card-subtitle
             >{{ DateTime.fromISO(currentCourse?.start_date).toFormat('dd LLLL') }} -
             {{ DateTime.fromISO(currentCourse?.end_date).toFormat('dd LLLL') }}</v-card-subtitle
@@ -39,11 +38,11 @@ onMounted(async () => {
         <v-card-text>
           <v-progress-linear
             model-value="20"
-            color="var(--curent-course-progress-bar-color)"
+            color="#3473ab"
           ></v-progress-linear>
         </v-card-text>
 
-        <v-card-item class="">
+        <v-card-item>
           <v-row>
             <v-col
               class="mb-1"
@@ -71,8 +70,7 @@ onMounted(async () => {
 
 <style scoped>
 #current-course-tasks {
-  background: var(--current-course-background);
-  border-bottom: 1px solid var(--current-course-bottom-border);
-  font-family: 'Albert Sans', sans-serif;
+  background:  #f4f8fc;
+  border-bottom: .07rem solid  #a9c9d6;
 }
 </style>

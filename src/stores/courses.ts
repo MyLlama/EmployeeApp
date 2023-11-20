@@ -8,7 +8,9 @@ const currentCourse = ref({
   end_date: '',
   chapters: <any>[],
   course_name: '',
-  course_img: ''
+  course_img: '',
+  course_discription: '',
+  module_end_date: <any>[]
 })
 
 const { authToken } = storeToRefs(useAuthStore())
@@ -88,17 +90,37 @@ export const useCourseStore = defineStore('course', () => {
             : (chapters[currentChapterIndex].section = [block])
         }
       })
+
       currentCourse.value.chapters = chapters
+
+      // Extracting the due dates from the chapters of the current course
+      const dueDates = currentCourse.value.chapters.reduce((duedate, chapter) => {
+        // Check if the chapter has sections
+        if (chapter.section && chapter.section.length >= 0) {
+          // Find the biggest date in the chapter's sections
+          const biggestDueDate = chapter.section.reduce((latest, section) => {
+            // Parse the due date of each section 
+            const sectionDueDate = Date.parse(section.due)
+            // compare to find the biggest one date
+            return sectionDueDate > latest ? sectionDueDate : latest
+          }, 0)
+          // Convert the biggestDueDate to ISO string and add to the due date array
+          duedate.push(new Date(biggestDueDate).toISOString())
+        }
+        return duedate
+      }, [])
+      currentCourse.value.module_end_date = dueDates
     } catch (error) {
       console.error(error)
     }
   }
 
+
   const getCourseImg = async (courseId: string): Promise<any> => {
     try {
       const response = await axios.get(`${baseUrl}/api/courses/v1/courses/${courseId}`, { headers })
-      const courseImage = baseUrl + response.data.media.course_image.uri
-      currentCourse.value.course_img = courseImage
+      currentCourse.value.course_img = baseUrl + response.data.media.course_image.uri
+      currentCourse.value.course_discription = response.data.short_description
     } catch (error) {
       console.log(error)
     }

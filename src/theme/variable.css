@@ -1,13 +1,4 @@
-:root {
-  --btn-color: #f89854;
-  --link-color: #d65a03;
-  --text-color: #000;
 
-  /* current course  */
-  --current-course-background: #f4f8fc;
-  --curent-course-progress-bar-color: #3473ab;
-  --current-course-bottom-border: #a9c9d6;
-}
 .pointer {
   cursor: pointer;
 }
@@ -42,12 +33,8 @@
     rgba(232, 244, 246, 0.82) 20.53%,
     rgba(196, 222, 231, 0.82) 102.44%
   );
-  --user-stats-card-border-color: #cce9eb;
-  --user-stats-card-border-color1: gray;
+  --user-stats-text-border-color: #729b9e;
   --user-stats-title-color: rgb(46, 68, 92);
-
-  /* Metric maps */
-  --metric-map-card-border-color: #e5e4e2;
 
   /* Quick Actions */
   --favorite-button: radial-gradient(
@@ -56,18 +43,4 @@
     rgba(255, 223, 213, 0.91) 100%
   );
 
-  /*learning module card */
-  --learning-module-card: radial-gradient(
-      108.29% 126.73% at 8.66% -41.4%,
-      rgba(0, 0, 0, 0.07) 0%,
-      rgba(0, 0, 0, 0) 100%
-    ),
-    radial-gradient(
-      111.01% 98.09% at 92.56% 114.4%,
-      rgba(255, 255, 255, 0.24) 0%,
-      rgba(255, 255, 255, 0) 100%
-    ),
-    #b1b4ff;
-  --learning-module-border: 2px solid #b1b4ff;
-  --learning-module-card-box-shadow: 0px 12px 10px -3px rgba(177, 180, 255, 0.3);
 }

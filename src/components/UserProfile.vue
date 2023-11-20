@@ -13,7 +13,7 @@ onMounted(async () => {
 
 <template>
   <v-card class="d-flex mx-4 my-3 elevation-0">
-    <v-avatar class="ma-3" size="60px">
+    <v-avatar class="ma-3" size="3.75rem">
       <v-img :src="user?.profile_image.image_url_full" alt="user-Profile"></v-img>
     </v-avatar>
 
@@ -28,12 +28,10 @@ onMounted(async () => {
 
 <style scoped>
 #user-name {
-  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 500;
 }
 
 #job-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: lighter;
 }
 </style>

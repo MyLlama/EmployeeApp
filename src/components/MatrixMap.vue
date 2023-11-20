@@ -67,11 +67,7 @@ onMounted(() => {
 </script>
 
 <style>
-.metric-maps-title {
-  font-family: 'Albert Sans', sans-serif;
-}
-
 .matric-map-card {
-  color: var(--metric-map-card-border-color);
+  color:  #e5e4e2
 }
 </style>

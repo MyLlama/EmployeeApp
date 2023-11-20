@@ -136,7 +136,7 @@ onMounted(async () => {
           <v-spacer></v-spacer>
           <div class="px-6 d-flex">
             <p class="text-caption mr-2">Try now</p>
-            <img src="../assets/icons/arrow-right.svg" />
+            <img src="../assets/icons/arrow-right_borderd.svg" />
           </div>
         </v-card-actions>
       </v-card>
@@ -150,7 +150,7 @@ onMounted(async () => {
           <v-list-item class="bg-grey-lighten-4 rounded-lg my-2 elevation-1 mx-1 my-3" v-for="index in 4" :key="index">
             {{ sections()[index]?.display_name }}
             <template v-slot:append>    
-              <img class="pointer" src="../assets/icons/arrow-right2.svg"/>
+              <img class="pointer" src="../assets/icons/arrow-right.svg"/>
             </template>
           </v-list-item>
         </v-list>
@@ -193,7 +193,7 @@ onMounted(async () => {
                     <v-list-item-title>{{ section.display_name }}</v-list-item-title>
 
                     <template v-slot:append>    
-                      <img class="pointer pr-3" src="../assets/icons/arrow-right2.svg" @click="showCompleteChecklist = false"/>
+                      <img class="pointer pr-3" src="../assets/icons/arrow-right.svg" @click="showCompleteChecklist = false"/>
                     </template>
                   </v-list-item>
                 </v-list>

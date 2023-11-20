@@ -99,8 +99,9 @@ export const useCourseStore = defineStore('course', () => {
         if (chapter.section && chapter.section.length >= 0) {
           // Find the biggest date in the chapter's sections
           const biggestDueDate = chapter.section.reduce((latest, section) => {
-            // Parse the due date of each section and compare to find the latest one
+            // Parse the due date of each section 
             const sectionDueDate = Date.parse(section.due)
+            // compare to find the biggest one date
             return sectionDueDate > latest ? sectionDueDate : latest
           }, 0)
           // Convert the biggestDueDate to ISO string and add to the due date array

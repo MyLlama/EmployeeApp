@@ -16,6 +16,12 @@
   padding: 0;
 }
 
+.primary-button {
+  background-color: var(--button-primary) !important;
+  color: white !important;
+  box-shadow: 0px 3px 5px -3px rgba(237, 77, 24, 0.23) !important;
+}
+
 :root {
   /* This is for your main call-to-action button, used in the most important interactions. */
   --button-primary: #ff6839;
@@ -35,6 +41,8 @@
   --button-disabled: black;
   /* For buttons that change state, like on/off switches. */
   --button-toggle: pink;
+  /* llama-secondary-lebel */
+  --llama-secondary-label: rgba(255, 201, 138, 1);
 
   /* User Stats */
   --user-stats-background-color: linear-gradient(

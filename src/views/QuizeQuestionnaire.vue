@@ -20,8 +20,8 @@
 
   <!-- Quize details sheet -->
   <v-sheet class="d-flex mx-2">
-    <p class="py-1 px-1" style="font-size: 14px">
-      <span style="font-size: 16px" class="font-weight-bold">9</span>/23
+    <p class="py-1 px-1" style="font-size: 0.875rem">
+      <span style="font-size: 1rem" class="font-weight-bold">9</span>/23
     </p>
     <v-spacer></v-spacer>
     <p class="py-1 px-1">MCQ</p>
